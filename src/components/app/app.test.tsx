@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { Header } from "../header/header";
 import App from "./app";
 jest.mock("../header/header.tsx");
