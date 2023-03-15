@@ -1,4 +1,4 @@
-import { WorkerStructure } from "../models/worker";
+import { WorkerStructure } from "../../models/worker";
 
 export interface RepoWorker<T> {
   create(userInfo: Partial<WorkerStructure>, urlPath: string): Promise<T>;

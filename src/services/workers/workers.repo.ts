@@ -1,4 +1,4 @@
-import { WorkerStructure } from "../models/worker";
+import { WorkerStructure } from "../../models/worker";
 import { RepoWorker } from "./worker.repo.interface";
 
 export class WorkersRepo implements RepoWorker<WorkerStructure> {
