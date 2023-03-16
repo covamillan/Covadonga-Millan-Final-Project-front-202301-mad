@@ -2,8 +2,8 @@ import { SyntheticEvent, useMemo } from "react";
 import { useWorkers } from "../../hooks/useWorkers";
 import { WorkersRepo } from "../../services/workers/workers.repo";
 import { Worker } from "../../models/worker";
-
 import styles from "./login.module.scss";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const repo = useMemo(() => new WorkersRepo(), []);
@@ -43,7 +43,7 @@ export default function Register() {
         <button type="submit">Login</button>
         <div>
           <h3>Don't have an account?</h3>
-          <h3>Register</h3>
+          <Link to="/register">Register</Link>
         </div>
       </form>
     </div>

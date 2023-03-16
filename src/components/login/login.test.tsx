@@ -3,12 +3,15 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import Login from "./login";
+import { MemoryRouter } from "react-router";
 
 describe("Given the Login component", () => {
   beforeEach(async () => {
     render(
       <Provider store={store}>
-        <Login></Login>
+        <MemoryRouter>
+          <Login></Login>
+        </MemoryRouter>
       </Provider>
     );
   });
