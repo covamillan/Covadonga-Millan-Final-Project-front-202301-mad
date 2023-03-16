@@ -1,0 +1,60 @@
+.register {
+  height: 88.9vh;
+  background-image: url("../../../public/logo-b-w.png");
+  background-repeat: no-repeat;
+  background-position: 26rem 12rem;
+  background-size: 26rem;
+
+  form {
+    display: flex;
+    align-content: flex-start;
+    position: absolute;
+    top: 11.4rem;
+    left: 48rem;
+    background-color: rgba(20, 88, 97, 1);
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 0.3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    gap: 2rem;
+
+    h1 {
+      color: rgb(253, 253, 253);
+      font-size: 24px;
+    }
+
+    input {
+      border-radius: 0.3rem;
+      font-size: 14px;
+      color: black;
+      font-weight: bold;
+      padding-left: 0.5rem;
+      padding-right: 0.6rem;
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+    }
+
+    button {
+      width: 100%;
+      background-color: rgba(189, 231, 234, 1);
+      border-radius: 0.3rem;
+      font-size: 12px;
+      color: black;
+      font-weight: bold;
+      padding-left: 0.6rem;
+      padding-right: 0.6rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
+    }
+
+    h3 {
+      font-size: 10px;
+      color: rgb(253, 253, 253);
+      margin-bottom: 0.5rem;
+    }
+  }
+}
