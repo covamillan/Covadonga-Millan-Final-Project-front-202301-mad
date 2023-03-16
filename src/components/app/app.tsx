@@ -1,12 +1,12 @@
 import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
-import Register from "../register/register";
+import Login from "../login/login";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <Register></Register>
+      <Login></Login>
       <Footer></Footer>
     </div>
   );
