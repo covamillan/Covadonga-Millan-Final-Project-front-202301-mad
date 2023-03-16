@@ -4,6 +4,10 @@ export type WorkerStructure = {
   password: string;
 };
 
+export type ServerResp = {
+  results: WorkerStructure[];
+};
+
 export class Worker implements WorkerStructure {
   constructor(
     public id: string,

@@ -1,7 +1,7 @@
-import { WorkerStructure } from "../../models/worker";
+import { ServerResp, WorkerStructure } from "../../models/worker";
 import { RepoWorker } from "./worker.repo.interface";
 
-export class WorkersRepo implements RepoWorker<WorkerStructure> {
+export class WorkersRepo implements RepoWorker<ServerResp> {
   url: string;
   constructor() {
     this.url = "http://localhost:4200/workers";
@@ -10,7 +10,7 @@ export class WorkersRepo implements RepoWorker<WorkerStructure> {
   async create(
     userInfo: Partial<WorkerStructure>,
     urlExtraPath: string
-  ): Promise<WorkerStructure> {
+  ): Promise<ServerResp> {
     const url = this.url + "/" + urlExtraPath;
 
     const resp = await fetch(url, {
@@ -23,7 +23,7 @@ export class WorkersRepo implements RepoWorker<WorkerStructure> {
     if (!resp.ok)
       throw new Error(`Error http: ${resp.status} ${resp.statusText}`);
 
-    const data = (await resp.json()) as WorkerStructure;
+    const data = await resp.json();
 
     return data;
   }
@@ -32,7 +32,7 @@ export class WorkersRepo implements RepoWorker<WorkerStructure> {
     userInfo: Partial<WorkerStructure>,
     urlExtraPath: string,
     token: string
-  ): Promise<WorkerStructure> {
+  ): Promise<ServerResp> {
     const url = this.url + "/" + urlExtraPath;
 
     const resp = await fetch(url, {
