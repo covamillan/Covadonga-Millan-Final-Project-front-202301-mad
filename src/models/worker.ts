@@ -1,5 +1,4 @@
 export type WorkerStructure = {
-  id: string;
   email: string;
   password: string;
 };
