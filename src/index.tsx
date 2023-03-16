@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import Provider from "react-redux/es/components/Provider";
 import { store } from "./store/store";
+import { MemoryRouter as Router } from "react-router-dom";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -12,7 +13,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>
 );
