@@ -1,4 +1,4 @@
-.register {
+.login {
   height: 88.9vh;
   background-image: url("../../../public/logo-b-w.png");
   background-repeat: no-repeat;
@@ -61,8 +61,8 @@
       }
 
       a {
-        font-weight: bold;
         color: inherit;
+        font-weight: bold;
         font-size: 10px;
         text-decoration: underline;
       }

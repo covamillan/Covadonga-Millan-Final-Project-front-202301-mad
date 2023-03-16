@@ -1,12 +1,12 @@
+import { AppRouter } from "../app.router/app.router";
 import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
-import Register from "../register/register";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <Register></Register>
+      <AppRouter></AppRouter>
       <Footer></Footer>
     </div>
   );

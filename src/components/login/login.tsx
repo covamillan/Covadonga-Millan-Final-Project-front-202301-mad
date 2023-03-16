@@ -1,13 +1,13 @@
 import { SyntheticEvent, useMemo } from "react";
-import { Link } from "react-router-dom";
 import { useWorkers } from "../../hooks/useWorkers";
-import { Worker } from "../../models/worker";
 import { WorkersRepo } from "../../services/workers/workers.repo";
-import styles from "./register.module.scss";
+import { Worker } from "../../models/worker";
+import styles from "./login.module.scss";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const repo = useMemo(() => new WorkersRepo(), []);
-  const { workerRegister } = useWorkers(repo);
+  const { workerLogin } = useWorkers(repo);
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -19,11 +19,11 @@ export default function Register() {
       password: inputs[1].value,
     };
 
-    workerRegister(newWorker);
+    workerLogin(newWorker);
     formData.reset();
   };
   return (
-    <div className={styles.register}>
+    <div className={styles.login}>
       <form onSubmit={handleSubmit}>
         <h1>Welcome</h1>
         <input
@@ -40,10 +40,10 @@ export default function Register() {
           required
           placeholder="Password"
         />
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
         <div>
-          <h3>Already have an account?</h3>
-          <Link to="/login">Login</Link>
+          <h3>Don't have an account?</h3>
+          <Link to="/register">Register</Link>
         </div>
       </form>
     </div>
