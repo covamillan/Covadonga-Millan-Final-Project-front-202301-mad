@@ -39,7 +39,7 @@ export default function Register() {
           required
           placeholder="Password"
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit">Register</button>
         <div>
           <h3>Already have an account?</h3>
           <h3>Login</h3>
