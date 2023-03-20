@@ -7,11 +7,8 @@ export class WorkersRepo implements RepoWorker<ServerResp> {
     this.url = "http://localhost:4200/workers";
   }
 
-  async create(
-    userInfo: Partial<WorkerStructure>,
-    urlExtraPath: string
-  ): Promise<ServerResp> {
-    const url = this.url + "/" + urlExtraPath;
+  async create(userInfo: Partial<WorkerStructure>): Promise<ServerResp> {
+    const url = this.url + "/register";
 
     const resp = await fetch(url, {
       method: "POST",
@@ -30,10 +27,9 @@ export class WorkersRepo implements RepoWorker<ServerResp> {
 
   async update(
     userInfo: Partial<WorkerStructure>,
-    urlExtraPath: string,
     token: string
   ): Promise<ServerResp> {
-    const url = this.url + "/" + urlExtraPath;
+    const url = this.url + "/login";
 
     const resp = await fetch(url, {
       method: "PATCH",

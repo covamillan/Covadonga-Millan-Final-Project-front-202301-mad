@@ -9,7 +9,7 @@ export function useWorkers(repo: WorkersRepo) {
 
   const workerRegister = async (info: Partial<WorkerStructure>) => {
     try {
-      const data = await repo.create(info, "register");
+      const data = await repo.create(info);
       dispatch(register(data.results[0]));
     } catch (error) {
       console.log((error as Error).message);
@@ -18,7 +18,7 @@ export function useWorkers(repo: WorkersRepo) {
 
   const workerLogin = async (info: Partial<WorkerStructure>) => {
     try {
-      const data = await repo.create(info, "login");
+      const data = await repo.create(info);
       dispatch(login(data.results[0]));
     } catch (error) {
       console.log((error as Error).message);
