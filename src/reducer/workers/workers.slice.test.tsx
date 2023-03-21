@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { WorkerStructure } from "../../models/worker";
-import { workerReducer, State } from "./workers.slice";
+import { workersReducer, State } from "./workers.slice";
 
 const secretWord = "password";
 const mockWorker = {
@@ -20,7 +20,7 @@ describe("Given user slice", () => {
         type: "worker/register",
         payload: mockWorker,
       };
-      const result = workerReducer(mockInitialState, mockRegister);
+      const result = workersReducer(mockInitialState, mockRegister);
       expect(result).toEqual({
         workerLogged: {} as WorkerStructure,
         workers: [mockWorker],
@@ -33,7 +33,7 @@ describe("Given user slice", () => {
         type: "worker/login",
         payload: mockWorker,
       };
-      const result = workerReducer(mockInitialState, mockLogin);
+      const result = workersReducer(mockInitialState, mockLogin);
       expect(result.workerLogged).toBe(mockWorker);
     });
   });
