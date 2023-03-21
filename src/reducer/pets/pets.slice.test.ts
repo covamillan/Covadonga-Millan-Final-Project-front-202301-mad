@@ -14,7 +14,7 @@ const mockPet = {
   email: "emilio@je",
   temper: "malo",
   gender: "chique",
-  img: "foto",
+  img: "foto8",
 };
 
 const mockPets = [
@@ -30,7 +30,7 @@ const mockPets = [
     email: "emilio@je",
     temper: "malo",
     gender: "chique",
-    img: "foto",
+    img: "foto3",
   },
   {
     id: "o",
@@ -44,7 +44,7 @@ const mockPets = [
     email: "emilio@je",
     temper: "malo",
     gender: "chique",
-    img: "foto",
+    img: "foto4",
   },
 ];
 
@@ -57,17 +57,17 @@ const mockFullInitialState = {
   pets: [
     {
       id: "e",
-      name: "firulais",
-      kg: 420,
-      age: 7,
-      species: "dog",
-      breed: "chihuahua",
+      name: "pepe",
+      kg: 40,
+      age: 3,
+      species: "cat",
+      breed: "european",
       owner: "un señor",
-      phone: [2, 1],
+      phone: [0, 2],
       email: "emilio@je",
       temper: "malo",
       gender: "chique",
-      img: "foto",
+      img: "foto1",
     },
 
     {
@@ -76,13 +76,13 @@ const mockFullInitialState = {
       kg: 42,
       age: 8,
       species: "dog",
-      breed: "chihuahua",
+      breed: "border collie",
       owner: "una señora",
       phone: [2, 1],
       email: "emilio@je",
       temper: "malo",
-      gender: "chique",
-      img: "foto",
+      gender: "señoro",
+      img: "foto2",
     },
   ],
 } as unknown as State;
@@ -125,20 +125,7 @@ describe("Given pet slice", () => {
     test("Then it should return a payload", () => {
       const mockCreate: PayloadAction<PetStructure> = {
         type: "pet/createPet",
-        payload: {
-          id: "e",
-          name: "firulais",
-          kg: 420,
-          age: 7,
-          species: "dog",
-          breed: "chihuahua",
-          owner: "un señor",
-          phone: [2, 1],
-          email: "emilio@je",
-          temper: "malo",
-          gender: "chique",
-          img: "foto",
-        },
+        payload: mockPet,
       };
       const result = petsReducer(mockInitialState, mockCreate);
       expect(result.pets[0]).toBe(mockCreate.payload);
