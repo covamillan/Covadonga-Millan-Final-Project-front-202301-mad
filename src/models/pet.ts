@@ -1,4 +1,5 @@
 export type PetStructure = {
+  id: string;
   name: string;
   kg: number;
   age: number;

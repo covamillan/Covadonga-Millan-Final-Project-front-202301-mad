@@ -11,7 +11,7 @@ const initialState: State = {
   workers: [],
 };
 
-export const workerSlice = createSlice({
+export const workersSlice = createSlice({
   name: "worker",
   initialState,
   reducers: {
@@ -24,6 +24,6 @@ export const workerSlice = createSlice({
   },
 });
 
-export const { register, login } = workerSlice.actions;
+export const { register, login } = workersSlice.actions;
 
-export const workerReducer = workerSlice.reducer;
+export const workersReducer = workersSlice.reducer;
