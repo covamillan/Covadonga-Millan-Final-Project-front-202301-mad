@@ -101,12 +101,12 @@ describe("Given pet slice", () => {
 
   describe("When we use the find pet method", () => {
     test("Then it should return a payload", () => {
-      const mockFind: PayloadAction<PetStructure> = {
+      const mockFind: PayloadAction<PetStructure["id"]> = {
         type: "pet/findPet",
-        payload: mockPet,
+        payload: "e",
       };
-      const result = petsReducer(mockInitialState, mockFind);
-      expect(result.pet).toEqual(mockFind.payload);
+      const result = petsReducer(mockFullInitialState, mockFind);
+      expect(result.pets[0]["id"]).toEqual(mockFind.payload);
     });
   });
 

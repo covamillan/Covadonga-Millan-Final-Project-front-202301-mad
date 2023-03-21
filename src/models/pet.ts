@@ -1,5 +1,4 @@
-export type PetStructure = {
-  id: string;
+export type ProtoPetStructure = {
   name: string;
   kg: number;
   age: number;
@@ -13,7 +12,13 @@ export type PetStructure = {
   img: string;
 };
 
-export type ServerResp = {
+type HasId = {
+  id: string;
+};
+
+export type PetStructure = ProtoPetStructure & HasId;
+
+export type PetServerResp = {
   results: PetStructure[];
 };
 
