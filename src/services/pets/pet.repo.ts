@@ -11,7 +11,7 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     this.url = "http://localhost:4200/pets";
   }
 
-  async queryPets(token: string): Promise<PetServerResp[]> {
+  async queryPetsRepo(token: string): Promise<PetServerResp> {
     const url = this.url + "/queryPets";
 
     const resp = await fetch(url, {
@@ -22,11 +22,11 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     if (!resp.ok)
       throw new Error("Error http: " + resp.status + resp.statusText);
 
-    const petData = (await resp.json()) as PetServerResp[];
+    const petData = (await resp.json()) as PetServerResp;
     return petData;
   }
 
-  async findPet(
+  async findPetRepo(
     token: string,
     idPet: PetStructure["id"]
   ): Promise<PetServerResp> {
@@ -44,10 +44,10 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     return petData;
   }
 
-  async findOwner(
+  async findOwnerRepo(
     token: string,
     ownerPet: PetStructure["owner"]
-  ): Promise<PetServerResp[]> {
+  ): Promise<PetServerResp> {
     const url = this.url + "/findOwner" + ownerPet;
     const resp = await fetch(url, {
       method: "GET",
@@ -57,11 +57,11 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     if (!resp.ok)
       throw new Error("Error http: " + resp.status + resp.statusText);
 
-    const petData = (await resp.json()) as PetServerResp[];
+    const petData = (await resp.json()) as PetServerResp;
     return petData;
   }
 
-  async createPet(
+  async createPetRepo(
     token: string,
     pet: ProtoPetStructure
   ): Promise<PetServerResp> {
@@ -79,7 +79,7 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     return petData;
   }
 
-  async updatePet(
+  async updatePetRepo(
     token: string,
     idPet: PetStructure["id"],
     pet: Partial<ProtoPetStructure>
@@ -98,7 +98,7 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     return petData;
   }
 
-  async deletePet(token: string, idPet: PetStructure["id"]): Promise<void> {
+  async deletePetRepo(token: string, idPet: PetStructure["id"]): Promise<void> {
     const url = this.url + "/deletePet" + idPet;
     const resp = await fetch(url, {
       method: "DELETE",

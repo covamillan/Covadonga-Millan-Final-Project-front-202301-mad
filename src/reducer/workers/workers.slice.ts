@@ -4,11 +4,13 @@ import { WorkerStructure } from "../../models/worker";
 export type State = {
   workerLogged: WorkerStructure;
   workers: WorkerStructure[];
+  worker: WorkerStructure;
 };
 
 const initialState: State = {
   workerLogged: {} as WorkerStructure,
   workers: [],
+  worker: {} as WorkerStructure,
 };
 
 export const workersSlice = createSlice({

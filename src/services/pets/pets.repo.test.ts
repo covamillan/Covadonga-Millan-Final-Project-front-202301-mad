@@ -11,13 +11,13 @@ describe("Given pets repository", () => {
         ok: true,
         json: jest.fn().mockResolvedValue(mockedValue),
       });
-      const result = await repo.queryPets("token");
+      const result = await repo.queryPetsRepo("token");
       expect(result).toEqual(mockedValue);
     });
 
     test("Then it should throw an error if the data is not ok", async () => {
       global.fetch = jest.fn().mockResolvedValue("error");
-      const result = repo.queryPets("token");
+      const result = repo.queryPetsRepo("token");
       await expect(result).rejects.toThrow();
     });
   });
@@ -30,13 +30,13 @@ describe("Given pets repository", () => {
         id: "e",
         json: jest.fn().mockResolvedValue(mockedValue),
       });
-      const result = await repo.findPet("token", "e");
+      const result = await repo.findPetRepo("token", "e");
       expect(result).toEqual(mockedValue);
     });
 
     test("Then it should throw an error if the data is not ok", async () => {
       global.fetch = jest.fn().mockResolvedValue("error");
-      const result = repo.findPet("token", "e");
+      const result = repo.findPetRepo("token", "e");
       await expect(result).rejects.toThrow();
     });
   });
@@ -49,13 +49,13 @@ describe("Given pets repository", () => {
         owner: "e",
         json: jest.fn().mockResolvedValue(mockedValue),
       });
-      const result = await repo.findOwner("token", "e");
+      const result = await repo.findOwnerRepo("token", "e");
       expect(result).toEqual(mockedValue);
     });
 
     test("Then it should throw an error if the data is not ok", async () => {
       global.fetch = jest.fn().mockResolvedValue("error");
-      const result = repo.findOwner("token", "e");
+      const result = repo.findOwnerRepo("token", "e");
       await expect(result).rejects.toThrow();
     });
   });
@@ -68,14 +68,14 @@ describe("Given pets repository", () => {
         body: "e",
         json: jest.fn().mockResolvedValue(mockedValue),
       });
-      const result = await repo.createPet("token", mockedValue);
+      const result = await repo.createPetRepo("token", mockedValue);
       expect(result).toEqual(mockedValue);
     });
 
     test("Then it should throw an error if the data is not ok", async () => {
       const mockedValue = {} as unknown as PetStructure;
       global.fetch = jest.fn().mockResolvedValue("error");
-      const result = repo.createPet("token", mockedValue);
+      const result = repo.createPetRepo("token", mockedValue);
       await expect(result).rejects.toThrow();
     });
   });
@@ -87,13 +87,13 @@ describe("Given pets repository", () => {
         ok: true,
         json: jest.fn().mockResolvedValue(mockedValue),
       });
-      const result = await repo.updatePet("token", "id", {});
+      const result = await repo.updatePetRepo("token", "id", {});
       expect(result).toEqual(mockedValue);
     });
 
     test("Then it should throw an error if the data is not ok", async () => {
       global.fetch = jest.fn().mockResolvedValue("error");
-      const result = repo.updatePet("token", "id", {});
+      const result = repo.updatePetRepo("token", "id", {});
       await expect(result).rejects.toThrow();
     });
   });
@@ -104,13 +104,13 @@ describe("Given pets repository", () => {
         ok: true,
         json: jest.fn().mockResolvedValue(mockedValue),
       });
-      const result = await repo.deletePet("token", "2");
+      const result = await repo.deletePetRepo("token", "2");
       expect(result).toEqual(undefined);
     });
 
     test("Then it should throw an error if the data is not ok", async () => {
       global.fetch = jest.fn().mockResolvedValue("error");
-      const result = repo.deletePet("token", "id");
+      const result = repo.deletePetRepo("token", "id");
       await expect(result).rejects.toThrow();
     });
   });

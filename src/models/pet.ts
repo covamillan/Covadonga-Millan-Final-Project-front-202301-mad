@@ -5,7 +5,7 @@ export type ProtoPetStructure = {
   species: string;
   breed: string;
   owner: string;
-  phone: number[];
+  phone: number;
   email: string;
   temper: string;
   gender: string;
@@ -31,7 +31,7 @@ export class Pet implements PetStructure {
     public species: string,
     public breed: string,
     public owner: string,
-    public phone: number[],
+    public phone: number,
     public email: string,
     public temper: string,
     public gender: string,
