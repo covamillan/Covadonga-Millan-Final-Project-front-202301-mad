@@ -17,8 +17,11 @@ export function usePets(repo: PetsRepo) {
   const petsState = useSelector((state: RootState) => state.pets);
 
   const petsDispatch = useDispatch<AppDispatch>();
+  debugger;
 
   const loadPets = useCallback(async () => {
+    debugger;
+
     try {
       const workerToken = workersState.workerLogged.token;
       if (!workerToken) throw new Error("Not authorized");
