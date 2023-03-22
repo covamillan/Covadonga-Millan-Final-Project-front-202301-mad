@@ -25,9 +25,8 @@ export const petsSlice = createSlice({
       state.pets = actualData.filter((item) => item.id === action.payload);
     },
 
-    findOwner(state, action: PayloadAction<PetStructure["owner"]>) {
-      const actualData = [...state.pets];
-      state.pets = actualData.filter((item) => item.owner === action.payload);
+    findOwner(state, action: PayloadAction<PetStructure[]>) {
+      state.pets = action.payload;
     },
 
     createPet(state, action: PayloadAction<PetStructure>) {

@@ -117,7 +117,7 @@ describe("Given pet slice", () => {
         payload: "un señor",
       };
       const result = petsReducer(mockFullInitialState, mockFindOwner);
-      expect(result.pets[0]["owner"]).toEqual(mockFindOwner.payload);
+      expect(result.pets).toEqual(mockFindOwner.payload);
     });
   });
 

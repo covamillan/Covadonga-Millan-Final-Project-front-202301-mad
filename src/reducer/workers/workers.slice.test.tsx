@@ -12,8 +12,9 @@ const mockWorker = {
 const mockInitialState: State = {
   workerLogged: {} as WorkerStructure,
   workers: [],
+  worker: {} as WorkerStructure,
 };
-describe("Given user slice", () => {
+describe("Given worker slice", () => {
   describe("When we use the register method", () => {
     test("Then it should return the payload", () => {
       const mockRegister: PayloadAction<WorkerStructure> = {
@@ -24,6 +25,7 @@ describe("Given user slice", () => {
       expect(result).toEqual({
         workerLogged: {} as WorkerStructure,
         workers: [mockWorker],
+        worker: {},
       });
     });
   });
