@@ -10,7 +10,6 @@ import { workersReducer } from "../reducer/workers/workers.slice";
 import { PetsRepo } from "../services/pets/pet.repo";
 import { store } from "../store/store";
 import { usePets } from "./usePets";
-
 describe("Given usePets hook", () => {
   let mockPayload: PetStructure;
   let mockRepo: PetsRepo;
@@ -24,7 +23,6 @@ describe("Given usePets hook", () => {
       },
     },
   });
-
   beforeEach(async () => {
     mockPayload = {
       name: "string",
@@ -39,7 +37,6 @@ describe("Given usePets hook", () => {
       gender: "string",
       img: "string",
     } as unknown as PetStructure;
-
     mockRepo = {
       queryPetsRepo: jest.fn(),
       findPetRepo: jest.fn(),
@@ -48,7 +45,6 @@ describe("Given usePets hook", () => {
       updatePetRepo: jest.fn(),
       deletePetRepo: jest.fn(),
     } as unknown as PetsRepo;
-
     const TestComponent = function () {
       const {
         loadPets,
@@ -58,7 +54,6 @@ describe("Given usePets hook", () => {
         updatePetId,
         deletePetId,
       } = usePets(mockRepo);
-
       return (
         <>
           <button onClick={() => loadPets()}>load</button>
@@ -78,7 +73,6 @@ describe("Given usePets hook", () => {
       )
     );
   });
-
   describe("When we render it", () => {
     test("Then it has to be a button", async () => {
       const elements = await screen.findAllByRole("button");
@@ -90,7 +84,6 @@ describe("Given usePets hook", () => {
       expect(elements[5]).toBeInTheDocument();
     });
   });
-
   describe("When we use the load pets function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
@@ -98,7 +91,6 @@ describe("Given usePets hook", () => {
       expect(mockRepo.queryPetsRepo).toHaveBeenCalled();
     });
   });
-
   describe("When we use the find pet by id function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
@@ -106,7 +98,6 @@ describe("Given usePets hook", () => {
       expect(mockRepo.findPetRepo).toHaveBeenCalled();
     });
   });
-
   describe("When we use the find pet by owner function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
@@ -114,7 +105,6 @@ describe("Given usePets hook", () => {
       expect(mockRepo.findOwnerRepo).toHaveBeenCalled();
     });
   });
-
   describe("When we use the create new pet function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
@@ -122,7 +112,6 @@ describe("Given usePets hook", () => {
       expect(mockRepo.createPetRepo).toHaveBeenCalled();
     });
   });
-
   describe("When we use the update pet function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
@@ -130,7 +119,6 @@ describe("Given usePets hook", () => {
       expect(mockRepo.updatePetRepo).toHaveBeenCalled();
     });
   });
-
   describe("When we use the delete pet function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
@@ -138,35 +126,8 @@ describe("Given usePets hook", () => {
       expect(mockRepo.deletePetRepo).toHaveBeenCalled();
     });
   });
-
   describe("When we do not have a valid token", () => {
-    let mockPayload: PetStructure;
-    let mockRepo: PetsRepo;
-
     beforeEach(async () => {
-      mockPayload = {
-        name: "string",
-        kg: 3,
-        age: 3,
-        species: "string",
-        breed: "string",
-        owner: "string",
-        phone: 9,
-        email: "string",
-        temper: "string",
-        gender: "string",
-        img: "string",
-      } as unknown as PetStructure;
-
-      mockRepo = {
-        queryPetsRepo: jest.fn(),
-        findPetRepo: jest.fn(),
-        findOwnerRepo: jest.fn(),
-        createPetRepo: jest.fn(),
-        updatePetRepo: jest.fn(),
-        deletePetRepo: jest.fn(),
-      } as unknown as PetsRepo;
-
       const TestComponent = function () {
         const {
           loadPets,
@@ -177,17 +138,18 @@ describe("Given usePets hook", () => {
           deletePetId,
         } = usePets(mockRepo);
         mockStore.getState().workers.workerLogged.token = "";
-
         return (
           <>
-            <button onClick={() => loadPets()}>load</button>
-            <button onClick={() => findPetId("id")}>find</button>
-            <button onClick={() => findPetOwner("owner")}>find owner</button>
-            <button onClick={() => createNewPet(mockPayload)}>create</button>
-            <button onClick={() => updatePetId("id", mockPayload)}>
-              update
+            <button onClick={() => loadPets()}>loadPet</button>
+            <button onClick={() => findPetId("id")}>findPet</button>
+            <button onClick={() => findPetOwner("owner")}>
+              find pet owner
             </button>
-            <button onClick={() => deletePetId("id")}>delete</button>
+            <button onClick={() => createNewPet(mockPayload)}>createPet</button>
+            <button onClick={() => updatePetId("id", mockPayload)}>
+              updatePet
+            </button>
+            <button onClick={() => deletePetId("id")}>deletePet</button>
           </>
         );
       };
@@ -205,35 +167,30 @@ describe("Given usePets hook", () => {
       await act(async () => userEvent.click(elements[0]));
       expect(spyLog).toHaveBeenCalled();
     });
-
     test("Then load pet by id should throw an error", async () => {
       const spyLog = jest.spyOn(console, "log");
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[1]));
       expect(spyLog).toHaveBeenCalled();
     });
-
     test("Then load pet by owner should throw an error", async () => {
       const spyLog = jest.spyOn(console, "log");
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[2]));
       expect(spyLog).toHaveBeenCalled();
     });
-
     test("Then create should throw an error", async () => {
       const spyLog = jest.spyOn(console, "log");
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[3]));
       expect(spyLog).toHaveBeenCalled();
     });
-
     test("Then update should throw an error", async () => {
       const spyLog = jest.spyOn(console, "log");
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[4]));
       expect(spyLog).toHaveBeenCalled();
     });
-
     test("Then delete should throw an error", async () => {
       const spyLog = jest.spyOn(console, "log");
       const elements = await screen.findAllByRole("button");
