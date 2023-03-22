@@ -8,6 +8,7 @@ import { PetStructure } from "../models/pet";
 import { WorkerStructure } from "../models/worker";
 import { workersReducer } from "../reducer/workers/workers.slice";
 import { PetsRepo } from "../services/pets/pet.repo";
+import { store } from "../store/store";
 import { usePets } from "./usePets";
 
 describe("Given usePets hook", () => {
@@ -135,6 +136,109 @@ describe("Given usePets hook", () => {
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[5]));
       expect(mockRepo.deletePetRepo).toHaveBeenCalled();
+    });
+  });
+
+  describe("When we do not have a valid token", () => {
+    let mockPayload: PetStructure;
+    let mockRepo: PetsRepo;
+
+    beforeEach(async () => {
+      mockPayload = {
+        name: "string",
+        kg: 3,
+        age: 3,
+        species: "string",
+        breed: "string",
+        owner: "string",
+        phone: 9,
+        email: "string",
+        temper: "string",
+        gender: "string",
+        img: "string",
+      } as unknown as PetStructure;
+
+      mockRepo = {
+        queryPetsRepo: jest.fn(),
+        findPetRepo: jest.fn(),
+        findOwnerRepo: jest.fn(),
+        createPetRepo: jest.fn(),
+        updatePetRepo: jest.fn(),
+        deletePetRepo: jest.fn(),
+      } as unknown as PetsRepo;
+
+      const TestComponent = function () {
+        const {
+          loadPets,
+          findPetId,
+          findPetOwner,
+          createNewPet,
+          updatePetId,
+          deletePetId,
+        } = usePets(mockRepo);
+        mockStore.getState().workers.workerLogged.token = "";
+
+        return (
+          <>
+            <button onClick={() => loadPets()}>load</button>
+            <button onClick={() => findPetId("id")}>find</button>
+            <button onClick={() => findPetOwner("owner")}>find owner</button>
+            <button onClick={() => createNewPet(mockPayload)}>create</button>
+            <button onClick={() => updatePetId("id", mockPayload)}>
+              update
+            </button>
+            <button onClick={() => deletePetId("id")}>delete</button>
+          </>
+        );
+      };
+      await act(async () =>
+        render(
+          <Provider store={store}>
+            <TestComponent></TestComponent>
+          </Provider>
+        )
+      );
+    });
+    test("Then load pets should throw an error", async () => {
+      const spyLog = jest.spyOn(console, "log");
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[0]));
+      expect(spyLog).toHaveBeenCalled();
+    });
+
+    test("Then load pet by id should throw an error", async () => {
+      const spyLog = jest.spyOn(console, "log");
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[1]));
+      expect(spyLog).toHaveBeenCalled();
+    });
+
+    test("Then load pet by owner should throw an error", async () => {
+      const spyLog = jest.spyOn(console, "log");
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[2]));
+      expect(spyLog).toHaveBeenCalled();
+    });
+
+    test("Then create should throw an error", async () => {
+      const spyLog = jest.spyOn(console, "log");
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[3]));
+      expect(spyLog).toHaveBeenCalled();
+    });
+
+    test("Then update should throw an error", async () => {
+      const spyLog = jest.spyOn(console, "log");
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[4]));
+      expect(spyLog).toHaveBeenCalled();
+    });
+
+    test("Then delete should throw an error", async () => {
+      const spyLog = jest.spyOn(console, "log");
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[5]));
+      expect(spyLog).toHaveBeenCalled();
     });
   });
 });
