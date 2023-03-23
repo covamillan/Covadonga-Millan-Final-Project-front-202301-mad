@@ -6,7 +6,7 @@ import { PetStructure } from "../models/pet";
 const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 
-export const defaultImg = async (info: Partial<PetStructure>, file?: File) => {
+export const newImg = async (info: Partial<PetStructure>, file?: File) => {
   if (!file) {
     info.img =
       "https://firebasestorage.googleapis.com/v0/b/pet-hospital-1e2b6.appspot.com/o/avatar.png?alt=media&token=779063c4-77ee-4973-b560-2d6473323581";
