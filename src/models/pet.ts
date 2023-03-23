@@ -9,7 +9,7 @@ export type ProtoPetStructure = {
   email: string;
   temper: string;
   gender: string;
-  img: string;
+  img?: string;
 };
 
 type HasId = {
