@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyCYKgyNdbxnxpRPzfcTFDslKI2Dltq3hAg",
+  apiKey: process.env.FB_APIKEY,
   authDomain: "pet-hospital-1e2b6.firebaseapp.com",
   projectId: "pet-hospital-1e2b6",
   storageBucket: "pet-hospital-1e2b6.appspot.com",
