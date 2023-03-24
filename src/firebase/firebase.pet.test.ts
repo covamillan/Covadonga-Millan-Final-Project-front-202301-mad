@@ -1,5 +1,5 @@
 import { getDownloadURL } from "firebase/storage";
-import { newImg } from "./firebase.pet";
+import { uploadImg } from "./firebase.pet";
 
 jest.mock("firebase/storage");
 
@@ -8,7 +8,7 @@ describe("Given the firebase function", () => {
     test("Then the image should be the default one", async () => {
       const mockInfo = { name: "pepe", img: "" };
 
-      await newImg(mockInfo);
+      // await uploadImg(mockInfo);
       expect(mockInfo.img).toBe(
         "https://firebasestorage.googleapis.com/v0/b/pet-hospital-1e2b6.appspot.com/o/avatar.png?alt=media&token=779063c4-77ee-4973-b560-2d6473323581"
       );
@@ -21,7 +21,7 @@ describe("Given the firebase function", () => {
       const mockFile = new File(["img"], "img.png", {
         type: "image/png",
       });
-      await newImg(mockInfo, mockFile);
+      await uploadImg(mockInfo, mockFile);
       expect(getDownloadURL).toHaveBeenCalled();
     });
   });

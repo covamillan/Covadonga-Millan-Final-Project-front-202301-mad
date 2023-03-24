@@ -9,7 +9,7 @@
     display: flex;
     align-content: flex-start;
     position: absolute;
-    top: 4.05rem;
+    top: 4rem;
     left: 48rem;
     background-color: rgba(20, 88, 97, 1);
     flex-direction: column;
@@ -92,19 +92,6 @@
       background-color: grey;
     }
 
-    ul {
-      list-style-type: none;
-      display: flex;
-      align-content: left;
-    }
-
-    li {
-      display: inline-block;
-      background-color: rgb(255, 255, 255);
-      border-radius: 0.3rem;
-      margin-right: 0.5rem;
-    }
-
     .temper {
       display: flex;
       flex-direction: column;
@@ -122,6 +109,28 @@
       input {
         font-size: 10px;
       }
+    }
+  }
+  .container {
+    list-style-type: none;
+    display: flex;
+    align-content: left;
+  }
+
+  .input {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.3rem;
+    margin-right: 0.5rem;
+  }
+  .species {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    option {
+      color: black;
+      font-weight: bold;
     }
   }
 }

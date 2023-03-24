@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { PetsRepo } from "../services/pets/pet.repo";
 import { AppDispatch, RootState } from "../store/store";
 import { useCallback } from "react";
-import { Pet, PetStructure, ProtoPetStructure } from "../models/pet";
+import { PetStructure, ProtoPetStructure } from "../models/pet";
 import {
   queryPets,
   findPet,
@@ -11,6 +11,8 @@ import {
   deletePet,
   updatePet,
 } from "../reducer/pets/pets.slice";
+import { storage } from "../firebase/firebase.pet";
+import { getDownloadURL, ref } from "firebase/storage";
 
 export function usePets(repo: PetsRepo) {
   const workersState = useSelector((state: RootState) => state.workers);
@@ -55,12 +57,13 @@ export function usePets(repo: PetsRepo) {
     }
   };
 
-  const createNewPet = async (pet: Partial<Pet>) => {
+  const createNewPet = async (pet: Partial<PetStructure>) => {
     try {
+      const imgStorage = ref(storage, `test/${pet.owner}_${pet.name}`);
+      pet.img = await getDownloadURL(imgStorage);
       const workerToken = workersState.workerLogged;
       if (!workerToken) throw new Error("Create not authorized");
       const data = await repo.createPetRepo(workerToken, pet);
-      debugger;
       petsDispatch(createPet(data.results[0]));
     } catch (error) {
       console.log((error as Error).message);

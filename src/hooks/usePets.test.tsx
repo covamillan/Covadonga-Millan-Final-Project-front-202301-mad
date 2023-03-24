@@ -18,7 +18,7 @@ describe("Given usePets hook", () => {
     preloadedState: {
       workers: {
         workers: [],
-        workerLogged: { token: "Token" } as WorkerStructure,
+        workerLogged: "token",
         worker: {} as WorkerStructure,
       },
     },
