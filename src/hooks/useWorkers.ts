@@ -18,8 +18,8 @@ export function useWorkers(repo: WorkersRepo) {
 
   const workerLogin = async (info: Partial<WorkerStructure>) => {
     try {
-      const data = await repo.create(info);
-      dispatch(login(data.results[0]));
+      const data = await repo.update(info);
+      dispatch(login(data.results));
     } catch (error) {
       console.log((error as Error).message);
     }

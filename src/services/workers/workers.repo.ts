@@ -1,6 +1,8 @@
 import { ServerResp, WorkerStructure } from "../../models/worker";
 import { RepoWorker } from "./worker.repo.interface";
 
+type Some = { results: string };
+
 export class WorkersRepo implements RepoWorker<ServerResp> {
   url: string;
   constructor() {
@@ -25,17 +27,14 @@ export class WorkersRepo implements RepoWorker<ServerResp> {
     return data;
   }
 
-  async update(
-    userInfo: Partial<WorkerStructure>,
-    token: string
-  ): Promise<ServerResp> {
+  async update(userInfo: Partial<WorkerStructure>) {
     const url = this.url + "/login";
 
     const resp = await fetch(url, {
-      method: "PATCH",
+      method: "POST",
       body: JSON.stringify(userInfo),
       headers: {
-        Authorization: "Bearer " + token,
+        "Content-type": "application/json",
       },
     });
     if (!resp.ok)

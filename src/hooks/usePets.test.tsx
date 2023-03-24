@@ -137,7 +137,7 @@ describe("Given usePets hook", () => {
           updatePetId,
           deletePetId,
         } = usePets(mockRepo);
-        mockStore.getState().workers.workerLogged.token = "";
+        mockStore.getState().workers.workerLogged = "";
         return (
           <>
             <button onClick={() => loadPets()}>loadPet</button>

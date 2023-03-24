@@ -14,8 +14,9 @@ describe("Given the useWorkers hook", () => {
 
   beforeEach(async () => {
     mockPayload = {
-      username: "joaquin",
-      email: "joaquin@muyguapo.cl",
+      username: "epa",
+      email: "epa@epa",
+      token: "e",
     } as unknown as WorkerStructure;
 
     mockRepo = {

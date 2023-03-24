@@ -1,8 +1,4 @@
-import {
-  PetServerResp,
-  PetStructure,
-  ProtoPetStructure,
-} from "../../models/pet";
+import { Pet, PetServerResp, PetStructure } from "../../models/pet";
 import { RepoPet } from "../pets/pet.repo.interface";
 
 export class PetsRepo implements RepoPet<PetServerResp> {
@@ -60,16 +56,18 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     const petData = (await resp.json()) as PetServerResp;
     return petData;
   }
-
   async createPetRepo(
     token: string,
-    pet: ProtoPetStructure
+    pet: Partial<Pet>
   ): Promise<PetServerResp> {
-    const url = this.url + "/createPet";
+    const url = this.url + "/create";
     const resp = await fetch(url, {
       method: "POST",
       body: JSON.stringify(pet),
-      headers: { Authorization: "Bearer " + token },
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + token,
+      },
     });
 
     if (!resp.ok)
@@ -82,7 +80,7 @@ export class PetsRepo implements RepoPet<PetServerResp> {
   async updatePetRepo(
     token: string,
     idPet: PetStructure["id"],
-    pet: Partial<ProtoPetStructure>
+    pet: Partial<Pet>
   ): Promise<PetServerResp> {
     const url = this.url + "/updatePet" + idPet;
     const resp = await fetch(url, {

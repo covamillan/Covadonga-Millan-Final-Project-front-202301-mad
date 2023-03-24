@@ -7,6 +7,7 @@ const mockWorker = {
   id: "id",
   email: "email",
   password: secretWord,
+  token: "",
 };
 
 const mockInitialState: State = {

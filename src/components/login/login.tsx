@@ -5,7 +5,7 @@ import { Worker } from "../../models/worker";
 import styles from "./login.module.scss";
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export default function Login() {
   const repo = useMemo(() => new WorkersRepo(), []);
   const { workerLogin } = useWorkers(repo);
 
@@ -45,6 +45,7 @@ export default function Register() {
           <h3>Don't have an account?</h3>
           <Link to="/register">Register</Link>
         </div>
+        <Link to="/add-pet">addpet</Link>
       </form>
     </div>
   );

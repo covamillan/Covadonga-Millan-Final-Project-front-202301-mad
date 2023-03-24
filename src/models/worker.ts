@@ -1,7 +1,7 @@
 export type WorkerStructure = {
   email: string;
   password: string;
-  token?: string;
+  token: string;
 };
 
 export type ServerResp = {
