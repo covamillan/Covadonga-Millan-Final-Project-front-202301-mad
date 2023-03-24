@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-unnecessary-act */
-import { act, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { WorkerStructure } from "../models/worker";
@@ -16,11 +16,11 @@ describe("Given the useWorkers hook", () => {
     mockPayload = {
       username: "epa",
       email: "epa@epa",
-      token: "e",
     } as unknown as WorkerStructure;
 
     mockRepo = {
       create: jest.fn(),
+      update: jest.fn(),
     } as unknown as WorkersRepo;
 
     const TestComponent = function () {
@@ -52,7 +52,7 @@ describe("Given the useWorkers hook", () => {
   describe("When you click the register button", () => {
     test("Then workerRegister function should be called", async () => {
       const elements = await screen.findAllByRole("button");
-      await act(async () => userEvent.click(elements[0]));
+      await fireEvent.click(elements[0]);
       expect(mockRepo.create).toHaveBeenCalled();
     });
   });
@@ -60,7 +60,7 @@ describe("Given the useWorkers hook", () => {
   describe("When you click the login button", () => {
     test("Then workerLogin function should be called", async () => {
       const elements = await screen.findAllByRole("button");
-      await act(async () => userEvent.click(elements[1]));
+      await fireEvent.click(elements[1]);
       expect(mockRepo.create).toHaveBeenCalled();
     });
   });

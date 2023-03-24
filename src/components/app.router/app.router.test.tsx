@@ -10,7 +10,7 @@ describe("Given the App router component", () => {
     render(
       <Provider store={store}>
         <Router
-          initialEntries={["/", "/login", "/register"]}
+          initialEntries={["/", "/login", "/register", "/add-pet"]}
           initialIndex={number}
         >
           <AppRouter></AppRouter>
@@ -39,6 +39,14 @@ describe("Given the App router component", () => {
     test("Then the role 'textbox' should be in the document", async () => {
       await waitFor(async () => listPaths(2));
       const element = await screen.findByRole("textbox");
+      expect(element).toBeInTheDocument();
+    });
+  });
+
+  describe("When rendering and the path is '/add-pet'", () => {
+    test("Then the role 'textbox' should be in the document", async () => {
+      await waitFor(async () => listPaths(3));
+      const element = await screen.findByRole("button");
       expect(element).toBeInTheDocument();
     });
   });
