@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./menu.module.scss";
-import { MenuOption } from "../app/app";
 
-type MenuProps = {
-  options: MenuOption[];
-};
-
-export function Menu({ options }: MenuProps) {
+export function Menu() {
   return (
     <nav className={styles.menu}>
       <ul>

@@ -1,13 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter as Router } from "react-router-dom";
-import { menuOptions } from "../app/app";
 
 import { Menu } from "./menu";
 
 describe("Given menu component", () => {
   render(
     <Router>
-      <Menu options={menuOptions}></Menu>
+      <Menu></Menu>
     </Router>
   );
   describe("When its rendered", () => {

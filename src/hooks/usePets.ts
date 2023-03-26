@@ -57,12 +57,14 @@ export function usePets(repo: PetsRepo) {
     }
   };
 
-  const createNewPet = async (pet: Partial<PetStructure>) => {
+  const createNewPet = async (pet: Partial<ProtoPetStructure>) => {
     try {
-      const imgStorage = ref(storage, `test/${pet.owner}_${pet.name}`);
-      pet.img = await getDownloadURL(imgStorage);
       const workerToken = workersState.workerLogged;
       if (!workerToken) throw new Error("Create not authorized");
+
+      const imgStorage = ref(storage, `test/${pet.owner}_${pet.name}`);
+      pet.img = await getDownloadURL(imgStorage);
+
       const data = await repo.createPetRepo(workerToken, pet);
       petsDispatch(createPet(data.results[0]));
     } catch (error) {

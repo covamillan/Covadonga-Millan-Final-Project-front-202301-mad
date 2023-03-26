@@ -21,7 +21,6 @@ export default function AddPet() {
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    debugger;
     const formInfo = event.currentTarget as HTMLFormElement;
 
     const newPet: Partial<Pet> | undefined = {
@@ -46,12 +45,7 @@ export default function AddPet() {
       formInfo.elements[13] as unknown as HTMLFormElement
     ).files?.item(0) as File;
 
-    console.dir(img);
-
-    console.log(type, img);
-
     if (type === "add") {
-      debugger;
       await uploadImg(newPet, img);
       createNewPet(newPet);
     } else {
