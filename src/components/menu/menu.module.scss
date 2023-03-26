@@ -1,0 +1,25 @@
+.menu {
+  ul {
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: baseline;
+
+    li {
+      list-style: none;
+
+      a {
+        display: flex;
+        color: white;
+        text-decoration: none;
+        align-items: center;
+        gap: 0.5rem;
+
+        img {
+          height: 1.2rem;
+        }
+      }
+    }
+  }
+}

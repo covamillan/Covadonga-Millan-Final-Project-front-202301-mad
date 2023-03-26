@@ -33,8 +33,13 @@ export default function AddPet() {
       kg: (formInfo.elements[5] as HTMLFormElement).value,
       phone: (formInfo.elements[6] as HTMLFormElement).value,
       email: (formInfo.elements[7] as HTMLFormElement).value,
-      temper: (formInfo.elements[8] as HTMLFormElement).value,
-      gender: (formInfo.elements[9] as HTMLFormElement).value,
+      temper:
+        (formInfo.elements[8] as HTMLFormElement).value ||
+        (formInfo.elements[9] as HTMLFormElement).value ||
+        (formInfo.elements[10] as HTMLFormElement).value,
+      gender:
+        (formInfo.elements[11] as HTMLFormElement).value ||
+        (formInfo.elements[12] as HTMLFormElement).value,
     };
 
     const img = (
