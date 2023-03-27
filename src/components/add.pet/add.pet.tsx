@@ -16,6 +16,7 @@ export default function AddPet() {
     (item) => item.id === id
   );
   const type = petInfo === undefined ? "add" : "";
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [temper, setTemper] = React.useState("");
   const [gender, setGender] = React.useState("");
 
@@ -53,6 +54,7 @@ export default function AddPet() {
       updatePetId(newPet.id!, img);
     }
 
+    setIsSubmitted(true);
     formInfo.reset();
   };
 
@@ -75,10 +77,6 @@ export default function AddPet() {
             <option value="">Choose an option</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
-            <option value="hamster">Hamster</option>
-            <option value="bird">Bird</option>
-            <option value="lizzard">Lizzard</option>
-            <option value="rabbit">Rabbit</option>
           </select>
         </label>
 
@@ -108,7 +106,7 @@ export default function AddPet() {
                   onChange={() => setTemper("good")}
                 />
                 <label htmlFor="good">
-                  <img alt="good" src="../../../smile.png" />
+                  <img alt="good" src="../../../good.png" />
                 </label>
               </div>
               <div className={styles.input}>
@@ -121,7 +119,7 @@ export default function AddPet() {
                   onChange={() => setTemper("bad")}
                 />
                 <label htmlFor="bad">
-                  <img alt="bad" src="../../../sad.png" />
+                  <img alt="bad" src="../../../bad.png" />
                 </label>
               </div>
               <div className={styles.input}>
@@ -164,7 +162,7 @@ export default function AddPet() {
                   onChange={() => setGender("male")}
                 />
                 <label htmlFor="male">
-                  <img alt="male" src="../../../male-gender.png" />
+                  <img alt="male" src="../../../male.png" />
                 </label>
               </div>
             </div>
@@ -174,8 +172,11 @@ export default function AddPet() {
             <input type="file" name="img" id="img" />
           </div>
         </div>
-
-        <button type="submit">Add</button>
+        {isSubmitted ? (
+          <h3>Added successfully!</h3>
+        ) : (
+          <button type="submit">Add</button>
+        )}
       </form>
     </div>
   );
