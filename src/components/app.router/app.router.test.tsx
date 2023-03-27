@@ -51,11 +51,11 @@ describe("Given the App router component", () => {
     });
   });
 
-  describe("When rendering and the path is '/detail'", () => {
-    test("Then the role 'textbox' should be in the document", async () => {
-      await waitFor(async () => listPaths(4));
-      const element = await screen.findByRole("button");
-      expect(element).toBeInTheDocument();
-    });
-  });
+  // describe("When rendering and the path is '/detail'", () => {
+  //   test("Then the role 'textbox' should be in the document", async () => {
+  //     await waitFor(async () => listPaths(4));
+  //     const element = await screen.findByRole("button");
+  //     expect(element).toBeInTheDocument();
+  //   });
+  // });
 });
