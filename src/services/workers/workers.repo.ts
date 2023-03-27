@@ -1,7 +1,6 @@
+import { Navigate } from "react-router-dom";
 import { ServerResp, WorkerStructure } from "../../models/worker";
 import { RepoWorker } from "./worker.repo.interface";
-
-type Some = { results: string };
 
 export class WorkersRepo implements RepoWorker<ServerResp> {
   url: string;

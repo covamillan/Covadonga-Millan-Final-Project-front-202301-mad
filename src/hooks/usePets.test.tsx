@@ -1,15 +1,19 @@
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-unnecessary-act */
 import { configureStore } from "@reduxjs/toolkit";
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { getDownloadURL, ref } from "firebase/storage";
+import { url } from "inspector";
 import { Provider } from "react-redux";
+import { storage } from "../firebase/firebase.pet";
 import { PetStructure } from "../models/pet";
 import { WorkerStructure } from "../models/worker";
 import { workersReducer } from "../reducer/workers/workers.slice";
 import { PetsRepo } from "../services/pets/pet.repo";
 import { store } from "../store/store";
 import { usePets } from "./usePets";
+
 describe("Given usePets hook", () => {
   let mockPayload: PetStructure;
   let mockRepo: PetsRepo;
@@ -119,9 +123,8 @@ describe("Given usePets hook", () => {
   describe("When we use the create new pet function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
-      fireEvent.click(elements[3]);
-      const data = await mockRepo.createPetRepo("Token", mockPayload);
-      expect(data).toHaveBeenCalled();
+      await act(async () => userEvent.click(elements[3]));
+      expect(mockRepo.createPetRepo("Token", mockPayload)).toHaveBeenCalled();
     });
   });
 

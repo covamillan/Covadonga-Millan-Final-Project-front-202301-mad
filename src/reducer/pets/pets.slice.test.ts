@@ -15,6 +15,18 @@ const mockPet = {
   temper: "malo",
   gender: "chique",
   img: "foto8",
+  symptoms: ["e"],
+  exam: {
+    temperature: 3,
+    hr: 3,
+    rr: 3,
+    membrane: "e",
+    cap: 2,
+    sap: 2,
+    dap: 2,
+    map: 2,
+  },
+  meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
 };
 
 const mockPets = [
@@ -31,6 +43,18 @@ const mockPets = [
     temper: "malo",
     gender: "chique",
     img: "foto3",
+    symptoms: ["e"],
+    exam: {
+      temperature: 3,
+      hr: 3,
+      rr: 3,
+      membrane: "e",
+      cap: 2,
+      sap: 2,
+      dap: 2,
+      map: 2,
+    },
+    meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
   },
   {
     id: "o",
@@ -45,6 +69,18 @@ const mockPets = [
     temper: "malo",
     gender: "chique",
     img: "foto4",
+    symptoms: ["e"],
+    exam: {
+      temperature: 3,
+      hr: 3,
+      rr: 3,
+      membrane: "e",
+      cap: 2,
+      sap: 2,
+      dap: 2,
+      map: 2,
+    },
+    meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
   },
 ];
 
@@ -68,6 +104,18 @@ const mockFullInitialState = {
       temper: "malo",
       gender: "chique",
       img: "foto1",
+      symptoms: ["e"],
+      exam: {
+        temperature: 3,
+        hr: 3,
+        rr: 3,
+        membrane: "e",
+        cap: 2,
+        sap: 2,
+        dap: 2,
+        map: 2,
+      },
+      meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
     },
 
     {
@@ -83,6 +131,18 @@ const mockFullInitialState = {
       temper: "malo",
       gender: "señoro",
       img: "foto2",
+      symptoms: ["e"],
+      exam: {
+        temperature: 3,
+        hr: 3,
+        rr: 3,
+        membrane: "e",
+        cap: 2,
+        sap: 2,
+        dap: 2,
+        map: 2,
+      },
+      meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
     },
   ],
 } as unknown as State;
@@ -149,6 +209,18 @@ describe("Given pet slice", () => {
           temper: "malo",
           gender: "chique",
           img: "foto",
+          symptoms: ["e"],
+          exam: {
+            temperature: 3,
+            hr: 3,
+            rr: 3,
+            membrane: "e",
+            cap: 2,
+            sap: 2,
+            dap: 2,
+            map: 2,
+          },
+          meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
         },
       };
       const result = petsReducer(mockFullInitialState, mockUpdate);
