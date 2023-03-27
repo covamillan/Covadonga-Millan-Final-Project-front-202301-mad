@@ -15,7 +15,7 @@ export function AppRouter() {
         <Route path={"/register"} element={<Register></Register>}></Route>
         <Route path={"/home"} element={<Home></Home>}></Route>
         <Route path={"/add-pet"} element={<AddPet></AddPet>}></Route>
-        <Route path={"/details"} element={<Detail></Detail>}></Route>
+        <Route path={"/detail"} element={<Detail></Detail>}></Route>
         {/* <Route path={menuOptions[2].path} element={<Logout></Logout>}></Route> */}
         {/* <Route path={"*"} element={<Error></Error>}></Route> */}
       </Routes>
