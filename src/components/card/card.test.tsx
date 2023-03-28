@@ -29,7 +29,7 @@ describe("Given card component", () => {
       age: 7,
       species: "dog",
       breed: "chihuahua",
-      owner: "un señor",
+      owner: "señor",
       phone: 2,
       email: "emilio@je",
       temper: "malo",
@@ -39,14 +39,14 @@ describe("Given card component", () => {
       exam: {
         temperature: 3,
         hr: 3,
-        rr: 3,
+        rr: 334,
         membrane: "e",
         cap: 2,
-        sap: 2,
+        sap: 2323,
         dap: 2,
         map: 2,
       },
-      meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
+      meds: { fluids: "a", med: "afsdf", ml: 4, hour: 44, via: "a" },
     } as unknown as PetStructure;
 
     render(

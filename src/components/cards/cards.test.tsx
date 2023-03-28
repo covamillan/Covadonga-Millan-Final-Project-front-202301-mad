@@ -1,6 +1,5 @@
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import { PetStructure } from "../../models/pet";
 import { Cards } from "./cards";
 import { render, screen } from "@testing-library/react";
 import { store } from "../../store/store";
@@ -55,11 +54,11 @@ jest.mock("../../hooks/usePets", () => ({
             rr: 3,
             membrane: "e",
             cap: 2,
-            sap: 2,
+            sap: 2342,
             dap: 2,
-            map: 2,
+            map: 342,
           },
-          meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
+          meds: { fluids: "avxc", med: "da", ml: 4, hour: 4, via: "afds" },
         },
       ],
     },
