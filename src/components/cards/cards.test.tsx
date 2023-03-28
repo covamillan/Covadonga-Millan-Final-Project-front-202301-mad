@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { Cards } from "./cards";
 import { render, screen } from "@testing-library/react";
 import { store } from "../../store/store";
-import { mockPet } from "../../models/petMock";
+import { mockPet } from "../../models/pet.mock";
 
 const mockPet2 = {
   id: "d",

@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import { mockPet } from "../../models/petMock";
+import { mockPet } from "../../models/pet.mock";
 import { WorkerStructure } from "../../models/worker";
 import { workersReducer } from "../../reducer/workers/workers.slice";
 import { Card } from "./card";

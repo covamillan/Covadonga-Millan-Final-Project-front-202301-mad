@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { mockPet, mockPets } from "../../models/petMock";
+import { mockPet, mockPets } from "../../models/pet.mock";
 import { PetStructure } from "../../models/pet";
 import { petsReducer, State } from "./pets.slice";
 
