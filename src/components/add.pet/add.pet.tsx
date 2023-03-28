@@ -1,4 +1,3 @@
-import React from "react";
 import { SyntheticEvent, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { uploadImg } from "../../firebase/firebase.pet";
@@ -7,6 +6,7 @@ import { Pet } from "../../models/pet";
 import { PetsRepo } from "../../services/pets/pet.repo";
 import styles from "./add.pet.module.scss";
 export default function AddPet() {
+  debugger;
   const { id } = useParams();
   const repo = useMemo(() => new PetsRepo(), []);
 
@@ -16,8 +16,6 @@ export default function AddPet() {
     (item) => item.id === id
   );
   const type = petInfo === undefined ? "add" : "";
-  const [temper, setTemper] = React.useState("");
-  const [gender, setGender] = React.useState("");
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
@@ -32,17 +30,12 @@ export default function AddPet() {
       kg: (formInfo.elements[5] as HTMLFormElement).value,
       phone: (formInfo.elements[6] as HTMLFormElement).value,
       email: (formInfo.elements[7] as HTMLFormElement).value,
-      temper:
-        (formInfo.elements[8] as HTMLFormElement).value ||
-        (formInfo.elements[9] as HTMLFormElement).value ||
-        (formInfo.elements[10] as HTMLFormElement).value,
-      gender:
-        (formInfo.elements[11] as HTMLFormElement).value ||
-        (formInfo.elements[12] as HTMLFormElement).value,
+      temper: (formInfo.elements[8] as HTMLFormElement).value,
+      gender: (formInfo.elements[9] as HTMLFormElement).value,
     };
 
     const img = (
-      formInfo.elements[13] as unknown as HTMLFormElement
+      formInfo.elements[10] as unknown as HTMLFormElement
     ).files?.item(0) as File;
 
     if (type === "add") {
@@ -75,10 +68,6 @@ export default function AddPet() {
             <option value="">Choose an option</option>
             <option value="dog">Dog</option>
             <option value="cat">Cat</option>
-            <option value="hamster">Hamster</option>
-            <option value="bird">Bird</option>
-            <option value="lizzard">Lizzard</option>
-            <option value="rabbit">Rabbit</option>
           </select>
         </label>
 
@@ -95,86 +84,30 @@ export default function AddPet() {
         <input type="text" name="email" id="email" required />
 
         <div className={styles.bottom}>
-          <div className={styles.temper}>
-            <label>Temper</label>
-            <div className={styles.container}>
-              <div className={styles.input}>
-                <input
-                  type="checkbox"
-                  id="good"
-                  name="temper"
-                  value="good"
-                  checked={temper === "good"}
-                  onChange={() => setTemper("good")}
-                />
-                <label htmlFor="good">
-                  <img alt="good" src="../../../smile.png" />
-                </label>
-              </div>
-              <div className={styles.input}>
-                <input
-                  type="checkbox"
-                  id="bad"
-                  name="temper"
-                  value="bad"
-                  checked={temper === "bad"}
-                  onChange={() => setTemper("bad")}
-                />
-                <label htmlFor="bad">
-                  <img alt="bad" src="../../../sad.png" />
-                </label>
-              </div>
-              <div className={styles.input}>
-                <input
-                  type="checkbox"
-                  id="neutral"
-                  name="temper"
-                  value="neutral"
-                  checked={temper === "neutral"}
-                  onChange={() => setTemper("neutral")}
-                />
-                <label htmlFor="neutral">
-                  <img alt="neutral" src="../../../neutral.png" />
-                </label>
-              </div>
-            </div>
-          </div>
+          <label htmlFor="temper" className={styles.species}>
+            Temper
+            <select name="Temper" id="Temper" required>
+              <option value="">Choose an option</option>
+              <option value="good">Good</option>
+              <option value="bad">Bad</option>
+              <option value="neutral">It Depends</option>
+            </select>
+          </label>
 
-          <div className={styles.gender}>
-            <label>Gender</label>
-            <div className={styles.container}>
-              <div className={styles.input}>
-                <input
-                  type="checkbox"
-                  id="female"
-                  value="female"
-                  checked={gender === "female"}
-                  onChange={() => setGender("female")}
-                />
-                <label htmlFor="female">
-                  <img alt="female" src="../../../female.png" />
-                </label>
-              </div>
-              <div className={styles.input}>
-                <input
-                  type="checkbox"
-                  id="male"
-                  value="male"
-                  checked={gender === "male"}
-                  onChange={() => setGender("male")}
-                />
-                <label htmlFor="male">
-                  <img alt="male" src="../../../male-gender.png" />
-                </label>
-              </div>
-            </div>
-          </div>
+          <label htmlFor="temper" className={styles.species}>
+            Gender
+            <select name="Temper" id="Temper" required>
+              <option value="">Choose an option</option>
+              <option value="good">Female</option>
+              <option value="bad">Male</option>
+            </select>
+          </label>
+
           <div className={styles.img}>
             <label>Image</label>
             <input type="file" name="img" id="img" />
           </div>
         </div>
-
         <button type="submit">Add</button>
       </form>
     </div>

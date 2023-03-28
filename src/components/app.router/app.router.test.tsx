@@ -10,7 +10,14 @@ describe("Given the App router component", () => {
     render(
       <Provider store={store}>
         <Router
-          initialEntries={["/", "/login", "/register", "/add-pet", "/detail"]}
+          initialEntries={[
+            "/",
+            "/login",
+            "/register",
+            "/home",
+            "/add-pet",
+            /*"/detail",*/
+          ]}
           initialIndex={number}
         >
           <AppRouter></AppRouter>
@@ -43,15 +50,23 @@ describe("Given the App router component", () => {
     });
   });
 
-  describe("When rendering and the path is '/add-pet'", () => {
+  describe("When rendering and the path is '/home'", () => {
     test("Then the role 'textbox' should be in the document", async () => {
       await waitFor(async () => listPaths(3));
+      const element = await screen.findAllByRole("heading");
+      expect(element).toHaveLength(9);
+    });
+  });
+
+  describe("When rendering and the path is '/add-pet'", () => {
+    test("Then the role 'textbox' should be in the document", async () => {
+      await waitFor(async () => listPaths(4));
       const element = await screen.findByRole("button");
       expect(element).toBeInTheDocument();
     });
   });
 
-  // describe("When rendering and the path is '/detail'", () => {
+  // A describe("When rendering and the path is '/detail'", () => {
   //   test("Then the role 'textbox' should be in the document", async () => {
   //     await waitFor(async () => listPaths(4));
   //     const element = await screen.findByRole("button");

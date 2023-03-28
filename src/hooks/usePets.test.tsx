@@ -1,18 +1,22 @@
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-unnecessary-act */
 import { configureStore } from "@reduxjs/toolkit";
-import { act, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { getDownloadURL, ref } from "firebase/storage";
-import { url } from "inspector";
 import { Provider } from "react-redux";
-import { storage } from "../firebase/firebase.pet";
-import { PetStructure } from "../models/pet";
+import { PetServerResp, PetStructure } from "../models/pet";
 import { WorkerStructure } from "../models/worker";
 import { workersReducer } from "../reducer/workers/workers.slice";
 import { PetsRepo } from "../services/pets/pet.repo";
 import { store } from "../store/store";
 import { usePets } from "./usePets";
+
+jest.mock("@firebase/storage", () => ({
+  ...jest.requireActual,
+  ref: jest.fn().mockReturnValue("storage"),
+  getStorage: jest.fn().mockReturnValue(""),
+  getDownloadURL: jest.fn().mockReturnValue(""),
+}));
 
 describe("Given usePets hook", () => {
   let mockPayload: PetStructure;
@@ -123,8 +127,12 @@ describe("Given usePets hook", () => {
   describe("When we use the create new pet function", () => {
     test("Then the function should be called", async () => {
       const elements = await screen.findAllByRole("button");
-      await act(async () => userEvent.click(elements[3]));
-      expect(mockRepo.createPetRepo("Token", mockPayload)).toHaveBeenCalled();
+      (mockRepo.createPetRepo as jest.Mock).mockResolvedValueOnce(
+        {} as PetServerResp
+      );
+      await fireEvent.click(elements[3]);
+
+      expect(mockRepo.createPetRepo).toHaveBeenCalled();
     });
   });
 
@@ -207,7 +215,10 @@ describe("Given usePets hook", () => {
     test("Then create should throw an error", async () => {
       const spyLog = jest.spyOn(console, "log");
       const elements = await screen.findAllByRole("button");
-      await act(async () => userEvent.click(elements[3]));
+      (mockRepo.createPetRepo as jest.Mock).mockRejectedValueOnce(
+        new Error("")
+      );
+      await userEvent.click(elements[3]);
       expect(spyLog).toHaveBeenCalled();
     });
 

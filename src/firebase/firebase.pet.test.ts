@@ -1,4 +1,4 @@
-import { getDownloadURL } from "firebase/storage";
+import { uploadBytes } from "firebase/storage";
 import { uploadImg } from "./firebase.pet";
 
 jest.mock("firebase/storage");
@@ -11,7 +11,7 @@ describe("Given the firebase function", () => {
         type: "image/png",
       });
       await uploadImg(mockInfo, mockFile);
-      expect(getDownloadURL).toHaveBeenCalled();
+      expect(uploadBytes).toHaveBeenCalled();
     });
   });
 });
