@@ -9,15 +9,16 @@ import { PetsRepo } from "../../services/pets/pet.repo";
 import { store } from "../../store/store";
 import AddSymptoms from "./symptoms.form";
 
-const mockParams = { id: "1" };
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useParams: () => mockParams,
-  useNavigate: () => jest.fn().mockImplementation(() => ({})),
-}));
 jest.mock("../../hooks/usePets.ts");
 jest.mock("../../firebase/firebase.pet.ts");
 
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => jest.fn().mockImplementation(() => ({})),
+  useParams: () => mockParams,
+}));
+
+const mockParams = { id: "1" };
 describe("Given the add symptoms component", () => {
   beforeEach(async () => {
     (usePets as jest.Mock).mockReturnValue({
