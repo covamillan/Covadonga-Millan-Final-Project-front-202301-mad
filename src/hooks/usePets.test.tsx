@@ -4,7 +4,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
-import { storage } from "../firebase/firebase.pet";
 import { PetServerResp, PetStructure } from "../models/pet";
 import { WorkerStructure } from "../models/worker";
 import { workersReducer } from "../reducer/workers/workers.slice";
