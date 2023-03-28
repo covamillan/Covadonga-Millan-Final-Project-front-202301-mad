@@ -4,33 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { Cards } from "./cards";
 import { render, screen } from "@testing-library/react";
 import { store } from "../../store/store";
-
-const mockPet = {
-  id: "e",
-  name: "firulais",
-  kg: 420,
-  age: 7,
-  species: "dog",
-  breed: "chihuahua",
-  owner: "un señor",
-  phone: 2,
-  email: "emilio@je",
-  temper: "malo",
-  gender: "chique",
-  img: "foto8",
-  symptoms: ["e"],
-  exam: {
-    temperature: 3,
-    hr: 3,
-    rr: 3,
-    membrane: "e",
-    cap: 2,
-    sap: 2,
-    dap: 2,
-    map: 2,
-  },
-  meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
-};
+import { mockPet } from "../../models/petMock";
 
 const mockPet2 = {
   id: "d",
