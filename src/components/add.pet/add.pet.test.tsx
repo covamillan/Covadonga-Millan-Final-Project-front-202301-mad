@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 /* eslint-disable testing-library/no-render-in-setup */
 import { act, fireEvent, render, screen } from "@testing-library/react";
-
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { usePets } from "../../hooks/usePets";
@@ -13,6 +12,7 @@ const mockParams = { id: "1" };
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: () => mockParams,
+  useNavigate: () => jest.fn().mockImplementation(() => ({})),
 }));
 jest.mock("../../hooks/usePets.ts");
 jest.mock("../../firebase/firebase.pet.ts");
@@ -51,12 +51,12 @@ describe("Given the add pet component", () => {
       createPetRepo: jest.fn(),
       updatePetRepo: jest.fn(),
     } as unknown as PetsRepo;
-    test("Then it should contain the 'button' role", async () => {
+    test("Then it must contain the 'button' role", async () => {
       const elements = [screen.getByRole("button")];
       await fireEvent.click(elements[0]);
     });
 
-    test("Then it should call update", async () => {
+    test("Then it must call update", async () => {
       await act(async () => {
         fireEvent.click(screen.getByRole("button"));
       });
@@ -64,12 +64,12 @@ describe("Given the add pet component", () => {
       expect(updatePetId).toHaveBeenCalledTimes(1);
     });
 
-    test("Then it should contain the 'heading' role", () => {
+    test("Then it must contain the 'heading' role", () => {
       const elements = [screen.getAllByRole("heading")];
       expect(elements.length).toBe(1);
     });
 
-    test("Then it should contain the 'textbox' role", () => {
+    test("Then it must contain the 'textbox' role", () => {
       const elements = [screen.getAllByRole("textbox")];
       expect(elements.length).toBe(1);
     });
@@ -101,12 +101,12 @@ describe("When we want to create a pet", () => {
     updatePetRepo: jest.fn(),
   } as unknown as PetsRepo;
   describe("When we render the component", () => {
-    test("Then it should contain the 'button' role", async () => {
+    test("Then it must contain the 'button' role", async () => {
       const elements = [screen.getByRole("button")];
       await fireEvent.click(elements[0]);
     });
 
-    test("Then it should call the create function", async () => {
+    test("Then it must call the create function", async () => {
       await act(async () => {
         fireEvent.click(screen.getByRole("button"));
       });

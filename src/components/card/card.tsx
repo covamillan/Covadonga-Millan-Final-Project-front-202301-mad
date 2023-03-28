@@ -27,16 +27,16 @@ export function Card({ pet }: { pet: PetStructure }) {
       </div>
       <div>
         <p>
-          {pet.meds.fluids}&nbsp;{pet.meds.ml}ml/kg/h
+          {pet.fluids}&nbsp;{pet.ml}ml/kg/h
         </p>
       </div>
 
       <div>
         <p>
-          {pet.meds.med}&nbsp;{pet.meds.via}
+          {pet.meds}&nbsp;{pet.via}
         </p>
-        <p>{pet.meds.ml}ml</p>
-        <p>q {pet.meds.hour}/hours</p>
+        <p>{pet.ml}ml</p>
+        <p>q {pet.hour}/hours</p>
       </div>
 
       <button type="submit" className={styles.passed} onClick={handleDelete}>
