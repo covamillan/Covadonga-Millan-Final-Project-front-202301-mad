@@ -1,0 +1,110 @@
+{
+  "dog": {
+    "breed": [
+      "Alaskan Malamute",
+      "Australian shepherd",
+      "Basset hound",
+      "Beagle",
+      "Border collie",
+      "Boxer",
+      "Brussels griffon",
+      "Chihuahua",
+      "Chinese crested",
+      "Dachshund",
+      "Dalmatian",
+      "Doberman pinscher",
+      "French bulldog",
+      "German shepherd",
+      "Golden retriever",
+      "Gordon setter",
+      "Great dane",
+      "Jack russell terrier",
+      "Labrador retriever",
+      "Mastiff",
+      "Pekingese",
+      "Pointer",
+      "Pomeranian",
+      "Poodle",
+      "Pug",
+      "Rottweiler",
+      "Saint Bernard",
+      "Samoyed",
+      "Shih tzu",
+      "Siberian husky",
+      "Weimaraner",
+      "West highland white terrier",
+      "Yorkshire terrier"
+    ]
+  },
+
+  "cat": {
+    "breed": [
+      "Abyssinian",
+      "American bobtail",
+      "Bengal",
+      "Bombay",
+      "British shorthair",
+      "Korat",
+      "Maine coon",
+      "Munchkin",
+      "Norwegian forest",
+      "Persian",
+      "Ragamuffin",
+      "Ragdoll",
+      "Russian blue",
+      "Savannah",
+      "Scottish fold",
+      "Siberian",
+      "Sphynx"
+    ]
+  },
+
+  "hamster": {
+    "breed": [
+      "Syrian",
+      "Chinese",
+      "Winter White Russian Dwarf  ",
+      "Campbell’s Russian Dwarf ",
+      "Roborovski Dwarf Hamster"
+    ]
+  },
+
+  "bird": {
+    "breed": [
+      "African grey parrot",
+      "Canary",
+      "Cockatiels",
+      "Dove",
+      "Green-cheeked conure",
+      "Hyacinth macaw",
+      "Lovebird",
+      "Parakeet",
+      "Pionus parrot"
+    ]
+  },
+
+  "rabbit": {
+    "breed": [
+      " American",
+      "Californian",
+      "Continental giant",
+      "Dutch",
+      "Flemish giantHolland lop",
+      "Mini rex",
+      "Netherland dwarf"
+    ]
+  },
+
+  "lizzard": {
+    "breed": [
+      "Bearded dragon",
+      "Chameleon",
+      "Crested gecko",
+      "Iguana",
+      "Leopard gecko",
+      "Monitor",
+      "Skink",
+      "Uromastyx"
+    ]
+  }
+}

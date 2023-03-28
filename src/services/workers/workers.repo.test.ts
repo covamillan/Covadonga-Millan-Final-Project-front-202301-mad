@@ -30,12 +30,12 @@ describe("Given the Workers repo", () => {
         ok: true,
         json: jest.fn().mockResolvedValue(mockedValue),
       });
-      const result = await repo.update({ email: "email" }, "data");
+      const result = await repo.update({ email: "email" });
       expect(result).toEqual(mockedValue);
     });
     test("then if the fetch is NOT OK it throw error", async () => {
       global.fetch = jest.fn().mockResolvedValue("error");
-      const result = repo.update({ email: "emilio" }, "data");
+      const result = repo.update({ email: "emilio" });
       await expect(result).rejects.toThrow();
     });
   });

@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { WorkerStructure } from "../../models/worker";
 
 export type State = {
-  workerLogged: WorkerStructure;
+  workerLogged: string;
   workers: WorkerStructure[];
   worker: WorkerStructure;
 };
 
 const initialState: State = {
-  workerLogged: {} as WorkerStructure,
+  workerLogged: "",
   workers: [],
   worker: {} as WorkerStructure,
 };
@@ -20,7 +20,7 @@ export const workersSlice = createSlice({
     register(state, action: PayloadAction<WorkerStructure>) {
       state.workers = [...state.workers, action.payload];
     },
-    login(state, action: PayloadAction<WorkerStructure>) {
+    login(state, action: PayloadAction<string>) {
       state.workerLogged = action.payload;
     },
   },

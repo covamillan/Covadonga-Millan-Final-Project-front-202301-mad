@@ -11,6 +11,8 @@ import {
   deletePet,
   updatePet,
 } from "../reducer/pets/pets.slice";
+import { storage } from "../firebase/firebase.pet";
+import { getDownloadURL, ref } from "firebase/storage";
 
 export function usePets(repo: PetsRepo) {
   const workersState = useSelector((state: RootState) => state.workers);
@@ -20,8 +22,8 @@ export function usePets(repo: PetsRepo) {
 
   const loadPets = useCallback(async () => {
     try {
-      const workerToken = workersState.workerLogged.token;
-      if (!workerToken) throw new Error("Not authorized");
+      const workerToken = workersState.workerLogged;
+      if (!workerToken) throw new Error("Load pets not authorized");
 
       const data = await repo.queryPetsRepo(workerToken);
 
@@ -29,13 +31,12 @@ export function usePets(repo: PetsRepo) {
     } catch (error) {
       console.log((error as Error).message);
     }
-  }, [petsDispatch, repo, workersState.workerLogged.token]);
+  }, [petsDispatch, repo, workersState.workerLogged]);
 
   const findPetId = async (idPet: PetStructure["id"]) => {
     try {
-      const workerToken = workersState.workerLogged.token;
-      if (!workerToken) throw new Error("Not authorized");
-
+      const workerToken = workersState.workerLogged;
+      if (!workerToken) throw new Error("Find pet not authorized");
       const data = await repo.findPetRepo(workerToken, idPet);
 
       petsDispatch(findPet(data.results[0].id));
@@ -46,8 +47,8 @@ export function usePets(repo: PetsRepo) {
 
   const findPetOwner = async (ownerPet: PetStructure["owner"]) => {
     try {
-      const workerToken = workersState.workerLogged.token;
-      if (!workerToken) throw new Error("Not authorized");
+      const workerToken = workersState.workerLogged;
+      if (!workerToken) throw new Error("Filter not authorized");
 
       const data = await repo.findOwnerRepo(workerToken, ownerPet);
       petsDispatch(findOwner(data.results));
@@ -56,10 +57,13 @@ export function usePets(repo: PetsRepo) {
     }
   };
 
-  const createNewPet = async (pet: ProtoPetStructure) => {
+  const createNewPet = async (pet: Partial<ProtoPetStructure>) => {
     try {
-      const workerToken = workersState.workerLogged.token;
-      if (!workerToken) throw new Error("Not authorized");
+      const workerToken = workersState.workerLogged;
+      if (!workerToken) throw new Error("Create not authorized");
+
+      const imgStorage = ref(storage, `test/${pet.owner}_${pet.name}`);
+      pet.img = await getDownloadURL(imgStorage);
 
       const data = await repo.createPetRepo(workerToken, pet);
       petsDispatch(createPet(data.results[0]));
@@ -73,8 +77,8 @@ export function usePets(repo: PetsRepo) {
     pet: Partial<ProtoPetStructure>
   ) => {
     try {
-      const workerToken = workersState.workerLogged.token;
-      if (!workerToken) throw new Error("Not authorized");
+      const workerToken = workersState.workerLogged;
+      if (!workerToken) throw new Error("Update pet not authorized");
 
       const data = await repo.updatePetRepo(workerToken, idPet, pet);
       petsDispatch(updatePet(data.results[0]));
@@ -85,9 +89,8 @@ export function usePets(repo: PetsRepo) {
 
   const deletePetId = async (idPet: PetStructure["id"]) => {
     try {
-      const workerToken = workersState.workerLogged.token;
-      if (!workerToken) throw new Error("Not authorized");
-      debugger;
+      const workerToken = workersState.workerLogged;
+      if (!workerToken) throw new Error("Delete pet not authorized");
       await repo.deletePetRepo(workerToken, idPet);
       petsDispatch(deletePet(idPet));
     } catch (error) {

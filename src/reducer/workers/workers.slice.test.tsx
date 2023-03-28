@@ -7,10 +7,11 @@ const mockWorker = {
   id: "id",
   email: "email",
   password: secretWord,
+  token: "",
 };
 
 const mockInitialState: State = {
-  workerLogged: {} as WorkerStructure,
+  workerLogged: "",
   workers: [],
   worker: {} as WorkerStructure,
 };
@@ -23,7 +24,7 @@ describe("Given worker slice", () => {
       };
       const result = workersReducer(mockInitialState, mockRegister);
       expect(result).toEqual({
-        workerLogged: {} as WorkerStructure,
+        workerLogged: "",
         workers: [mockWorker],
         worker: {},
       });

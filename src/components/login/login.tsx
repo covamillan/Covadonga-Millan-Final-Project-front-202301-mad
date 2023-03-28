@@ -5,7 +5,7 @@ import { Worker } from "../../models/worker";
 import styles from "./login.module.scss";
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export default function Login() {
   const repo = useMemo(() => new WorkersRepo(), []);
   const { workerLogin } = useWorkers(repo);
 

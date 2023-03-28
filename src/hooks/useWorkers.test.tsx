@@ -15,11 +15,12 @@ describe("Given the useWorkers hook", () => {
   beforeEach(async () => {
     mockPayload = {
       username: "joaquin",
-      email: "joaquin@muyguapo.cl",
+      email: "joaquin@muymajo.cl",
     } as unknown as WorkerStructure;
 
     mockRepo = {
       create: jest.fn(),
+      update: jest.fn(),
     } as unknown as WorkersRepo;
 
     const TestComponent = function () {
@@ -60,7 +61,7 @@ describe("Given the useWorkers hook", () => {
     test("Then workerLogin function should be called", async () => {
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[1]));
-      expect(mockRepo.create).toHaveBeenCalled();
+      expect(mockRepo.update).toHaveBeenCalled();
     });
   });
 });
