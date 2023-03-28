@@ -1,6 +1,7 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 /* eslint-disable testing-library/no-render-in-setup */
 import { act, fireEvent, render, screen } from "@testing-library/react";
+
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { usePets } from "../../hooks/usePets";
@@ -24,54 +25,10 @@ describe("Given the add pet component", () => {
           {
             id: "1",
             name: "firulais",
-            kg: 420,
-            age: 7,
-            species: "dog",
-            breed: "chihuahua",
-            owner: "un señor",
-            phone: 2,
-            email: "emilio@je",
-            temper: "malo",
-            gender: "chique",
-            img: "foto8",
-            symptoms: ["e"],
-            exam: {
-              temperature: 3,
-              hr: 3,
-              rr: 3,
-              membrane: "e",
-              cap: 2,
-              sap: 2,
-              dap: 2,
-              map: 2,
-            },
-            meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
           },
           {
             id: "1",
-            name: "pepe",
-            kg: 420,
-            age: 7,
-            species: "dog",
-            breed: "chihuahua",
-            owner: "un señor",
-            phone: 2,
-            email: "emilio@je",
-            temper: "malo",
-            gender: "chique",
-            img: "foto8",
-            symptoms: ["e"],
-            exam: {
-              temperature: 3,
-              hr: 3,
-              rr: 3,
-              membrane: "e",
-              cap: 2,
-              sap: 2,
-              dap: 2,
-              map: 2,
-            },
-            meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
+            name: "a",
           },
         ],
       },
@@ -91,12 +48,8 @@ describe("Given the add pet component", () => {
   });
   describe("When we render the component and do an update", () => {
     const mockRepo = {
-      queryPetsRepo: jest.fn(),
-      findPetRepo: jest.fn(),
-      findOwnerRepo: jest.fn(),
       createPetRepo: jest.fn(),
       updatePetRepo: jest.fn(),
-      deletePetRepo: jest.fn(),
     } as unknown as PetsRepo;
     test("Then it should contain the 'button' role", async () => {
       const elements = [screen.getByRole("button")];
@@ -147,7 +100,7 @@ describe("When we want to create a pet", () => {
     createPetRepo: jest.fn(),
     updatePetRepo: jest.fn(),
   } as unknown as PetsRepo;
-  describe("When we render the component with different payload", () => {
+  describe("When we render the component", () => {
     test("Then it should contain the 'button' role", async () => {
       const elements = [screen.getByRole("button")];
       await fireEvent.click(elements[0]);
