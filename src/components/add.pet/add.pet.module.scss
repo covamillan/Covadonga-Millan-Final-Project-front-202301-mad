@@ -81,42 +81,6 @@
     label {
       margin-bottom: 0.4rem;
     }
-
-    img {
-      height: 24px;
-      margin: 0.1rem;
-      padding-top: 0.2rem;
-      padding-left: 0.1rem;
-      padding-right: 0.1rem;
-    }
-
-    input[type="checkbox"] {
-      display: none;
-    }
-
-    :checked + label:before {
-      content: "✓";
-      background-color: grey;
-    }
-
-    .temper {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .gender {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .img {
-      display: flex;
-      flex-direction: column;
-
-      input {
-        font-size: 10px;
-      }
-    }
   }
   .container {
     list-style-type: none;

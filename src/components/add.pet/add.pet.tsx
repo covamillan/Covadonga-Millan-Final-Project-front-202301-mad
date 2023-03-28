@@ -17,9 +17,6 @@ export default function AddPet() {
     (item) => item.id === id
   );
   const type = petInfo === undefined ? "add" : "";
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [temper, setTemper] = useState("");
-  const [gender, setGender] = useState("");
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
@@ -50,7 +47,6 @@ export default function AddPet() {
       updatePetId(newPet.id!, img);
     }
 
-    setIsSubmitted(true);
     formInfo.reset();
   };
 
@@ -113,11 +109,7 @@ export default function AddPet() {
             <input type="file" name="img" id="img" />
           </div>
         </div>
-        {isSubmitted ? (
-          <h3>Added successfully!</h3>
-        ) : (
-          <button type="submit">Add</button>
-        )}
+        <button type="submit">Add</button>
       </form>
     </div>
   );
