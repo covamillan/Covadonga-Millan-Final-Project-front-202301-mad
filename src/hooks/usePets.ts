@@ -92,6 +92,7 @@ export function usePets(repo: PetsRepo) {
       const workerToken = workersState.workerLogged;
       if (!workerToken) throw new Error("Delete pet not authorized");
       await repo.deletePetRepo(workerToken, idPet);
+      console.log(idPet);
       petsDispatch(deletePet(idPet));
     } catch (error) {
       console.log((error as Error).message);

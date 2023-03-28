@@ -1,52 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { mockPet, mockPets } from "../../models/pet.mock";
 import { PetStructure } from "../../models/pet";
 import { petsReducer, State } from "./pets.slice";
-
-const mockPet = {
-  id: "e",
-  name: "firulais",
-  kg: 420,
-  age: 7,
-  species: "dog",
-  breed: "chihuahua",
-  owner: "un señor",
-  phone: 2,
-  email: "emilio@je",
-  temper: "malo",
-  gender: "chique",
-  img: "foto8",
-};
-
-const mockPets = [
-  {
-    id: "e",
-    name: "firulais",
-    kg: 420,
-    age: 7,
-    species: "dog",
-    breed: "chihuahua",
-    owner: "un señor",
-    phone: 2,
-    email: "emilio@je",
-    temper: "malo",
-    gender: "chique",
-    img: "foto3",
-  },
-  {
-    id: "o",
-    name: "chucho",
-    kg: 42,
-    age: 8,
-    species: "dog",
-    breed: "chihuahua",
-    owner: "una señora",
-    phone: 5,
-    email: "emilio@je",
-    temper: "malo",
-    gender: "chique",
-    img: "foto4",
-  },
-];
 
 const mockInitialState: State = {
   pet: {} as PetStructure,
@@ -54,37 +9,7 @@ const mockInitialState: State = {
 };
 
 const mockFullInitialState = {
-  pets: [
-    {
-      id: "e",
-      name: "pepe",
-      kg: 40,
-      age: 3,
-      species: "cat",
-      breed: "european",
-      owner: "un señor",
-      phone: 0,
-      email: "emilio@je",
-      temper: "malo",
-      gender: "chique",
-      img: "foto1",
-    },
-
-    {
-      id: "o",
-      name: "chucho",
-      kg: 42,
-      age: 8,
-      species: "dog",
-      breed: "border collie",
-      owner: "una señora",
-      phone: 5,
-      email: "emilio@je",
-      temper: "malo",
-      gender: "señoro",
-      img: "foto2",
-    },
-  ],
+  pets: mockPets,
 } as unknown as State;
 
 describe("Given pet slice", () => {
@@ -149,6 +74,18 @@ describe("Given pet slice", () => {
           temper: "malo",
           gender: "chique",
           img: "foto",
+          symptoms: ["e"],
+          exam: {
+            temperature: 3,
+            hr: 3,
+            rr: 3,
+            membrane: "e",
+            cap: 2,
+            sap: 2,
+            dap: 2,
+            map: 2,
+          },
+          meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
         },
       };
       const result = petsReducer(mockFullInitialState, mockUpdate);

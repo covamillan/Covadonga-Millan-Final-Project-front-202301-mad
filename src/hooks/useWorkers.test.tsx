@@ -3,6 +3,7 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 import { WorkerStructure } from "../models/worker";
 import { WorkersRepo } from "../services/workers/workers.repo";
 import { store } from "../store/store";
@@ -36,7 +37,9 @@ describe("Given the useWorkers hook", () => {
     await act(async () =>
       render(
         <Provider store={store}>
-          <TestComponent></TestComponent>
+          <MemoryRouter>
+            <TestComponent></TestComponent>
+          </MemoryRouter>
         </Provider>
       )
     );

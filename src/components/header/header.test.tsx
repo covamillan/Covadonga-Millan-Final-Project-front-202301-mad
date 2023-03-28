@@ -1,21 +1,21 @@
 /* eslint-disable testing-library/no-render-in-setup */
-/* eslint-disable testing-library/no-unnecessary-act */
-import { act, render, screen } from "@testing-library/react";
+import { configureStore } from "@reduxjs/toolkit";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
+import { WorkerStructure } from "../../models/worker";
+import { workersReducer } from "../../reducer/workers/workers.slice";
 import { store } from "../../store/store";
 import { Header } from "./header";
 describe("Given the header component", () => {
-  beforeEach(async () => {
-    await act(async () => {
-      render(
+  beforeEach(() => {
+    render(
+      <MemoryRouter>
         <Provider store={store}>
-          <MemoryRouter>
-            <Header />
-          </MemoryRouter>
+          <Header />
         </Provider>
-      );
-    });
+      </MemoryRouter>
+    );
   });
   describe("When its rendered", () => {
     test("Then it should contain the word", () => {
@@ -29,7 +29,31 @@ describe("Given the header component", () => {
 
     test("Then it should contain img role", () => {
       const element = screen.getAllByRole("img");
-      expect(element).toHaveLength(2);
+      expect(element).toHaveLength(1);
+    });
+  });
+  describe("When there's a token", () => {
+    const mockStore = configureStore({
+      reducer: { workers: workersReducer },
+      preloadedState: {
+        workers: {
+          workers: [],
+          workerLogged: "token",
+          worker: {} as WorkerStructure,
+        },
+      },
+    });
+
+    render(
+      <MemoryRouter>
+        <Provider store={mockStore}>
+          <Header></Header>
+        </Provider>
+      </MemoryRouter>
+    );
+    test("Then it should have a menu when logged", () => {
+      const element = screen.getByRole("heading");
+      expect(element).toBeInTheDocument();
     });
   });
 });

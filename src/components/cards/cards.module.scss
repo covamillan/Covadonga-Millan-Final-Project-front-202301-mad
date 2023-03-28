@@ -1,0 +1,43 @@
+.cards {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 4rem;
+  padding-right: 8.1rem;
+
+  h2 {
+    display: flex;
+    font-weight: bold;
+    font-size: 26px;
+    justify-content: flex-end;
+  }
+
+  h3 {
+    font-weight: bold;
+    font-size: 26px;
+    margin-top: 2rem;
+    color: rgba(20, 88, 97, 1);
+    border-bottom: 1px solid rgba(20, 88, 97, 1);
+  }
+}
+.section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: rgba(20, 88, 97, 1);
+  display: flex;
+  font-size: 24px;
+
+  .fluids {
+    position: absolute;
+    left: 35rem;
+  }
+
+  .meds {
+    position: absolute;
+    left: 51rem;
+  }
+
+  .status {
+    position: absolute;
+    left: 74.5rem;
+  }
+}

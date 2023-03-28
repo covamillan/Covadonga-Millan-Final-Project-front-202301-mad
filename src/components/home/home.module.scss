@@ -1,0 +1,12 @@
+.home {
+  li {
+    padding: 1rem;
+    padding-left: 4rem;
+    margin-top: 1rem;
+  }
+
+  li:nth-of-type(odd) {
+    background-color: rgba(217, 217, 217, 0.4);
+    border: 5px;
+  }
+}
