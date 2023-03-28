@@ -11,14 +11,16 @@ const mockInitialState: State = {
 
 const mockFullInitialState = {
   pets: mockPets,
+  pet: {} as PetStructure,
+  actualPet: {} as PetStructure,
 } as unknown as State;
 
 describe("Given pet slice", () => {
   describe("When we use the query pet method", () => {
     test("Then it should return the payload", () => {
-      const mockQuery: PayloadAction<PetStructure[]> = {
+      const mockQuery: PayloadAction<PetStructure> = {
         type: "pet/queryPets",
-        payload: mockPets,
+        payload: mockPet,
       };
       const result = petsReducer(mockInitialState, mockQuery);
       expect(result.pets).toEqual(mockQuery.payload);
@@ -75,7 +77,7 @@ describe("Given pet slice", () => {
           temper: "malo",
           gender: "chique",
           img: "foto",
-          symptoms: ["e"],
+          symptoms: "e",
           temperature: 3,
           hr: 3,
           rr: 3,

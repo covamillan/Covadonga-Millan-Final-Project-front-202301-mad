@@ -12,6 +12,7 @@ const mockParams = { id: "1" };
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: () => mockParams,
+  useNavigate: () => jest.fn().mockImplementation(() => ({})),
 }));
 jest.mock("../../hooks/usePets.ts");
 jest.mock("../../firebase/firebase.pet.ts");

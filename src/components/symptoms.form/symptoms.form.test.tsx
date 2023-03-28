@@ -2,7 +2,6 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 /* eslint-disable testing-library/no-render-in-setup */
 import { act, fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { usePets } from "../../hooks/usePets";
@@ -12,7 +11,7 @@ import AddSymptoms from "./symptoms.form";
 
 const mockParams = { id: "1" };
 jest.mock("react-router-dom", () => ({
-  ...(jest.requireActual("react-router-dom") as any),
+  ...jest.requireActual("react-router-dom"),
   useParams: () => mockParams,
   useNavigate: () => jest.fn().mockImplementation(() => ({})),
 }));
@@ -48,12 +47,12 @@ describe("Given the add symptoms component", () => {
     const mockRepo = {
       updatePetRepo: jest.fn(),
     } as unknown as PetsRepo;
-    test("Then it should contain the 'button' role", async () => {
+    test("Then it should contain a button", async () => {
       const elements = [screen.getByRole("button")];
       await fireEvent.click(elements[0]);
     });
 
-    test("Then it should call update", async () => {
+    test("Then it should call update function", async () => {
       await act(async () => {
         fireEvent.click(screen.getByRole("button"));
       });
@@ -61,12 +60,12 @@ describe("Given the add symptoms component", () => {
       expect(updatePetId).toHaveBeenCalledTimes(1);
     });
 
-    test("Then it should contain the 'heading' role", () => {
+    test("Then it should contain a heading", () => {
       const elements = [screen.getAllByRole("heading")];
       expect(elements.length).toBe(1);
     });
 
-    test("Then it should contain the 'textbox' role", () => {
+    test("Then it should contain a textbox", () => {
       const elements = [screen.getAllByRole("textbox")];
       expect(elements.length).toBe(1);
     });
