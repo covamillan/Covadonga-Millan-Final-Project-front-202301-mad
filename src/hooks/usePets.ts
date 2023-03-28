@@ -74,13 +74,13 @@ export function usePets(repo: PetsRepo) {
 
   const updatePetId = async (
     idPet: PetStructure["id"],
-    pet: Partial<ProtoPetStructure>
+    pet: Partial<PetStructure>
   ) => {
     try {
       const workerToken = workersState.workerLogged;
       if (!workerToken) throw new Error("Update pet not authorized");
-
       const data = await repo.updatePetRepo(workerToken, idPet, pet);
+      console.log("update hook", data.results);
       petsDispatch(updatePet(data.results[0]));
     } catch (error) {
       console.log((error as Error).message);

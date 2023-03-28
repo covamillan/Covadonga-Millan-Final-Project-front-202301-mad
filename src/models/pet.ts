@@ -9,25 +9,21 @@ export type ProtoPetStructure = {
   email: string;
   temper: string;
   gender: string;
-  img: string;
-  symptoms: string[];
-  exam: {
-    temperature: number;
-    hr: number;
-    rr: number;
-    membrane: string;
-    cap: number;
-    sap: number;
-    dap: number;
-    map: number;
-  };
-  meds: {
-    fluids: string;
-    med: string;
-    ml: number;
-    hour: number;
-    via: string;
-  };
+  img?: string;
+  symptoms?: string;
+  temperature?: number;
+  hr?: number;
+  rr?: number;
+  membrane?: string;
+  cap?: number;
+  sap?: number;
+  dap?: number;
+  map?: number;
+  fluids?: string;
+  meds?: string;
+  ml?: number;
+  hour?: number;
+  via?: string;
 };
 
 type HasId = {
@@ -54,23 +50,19 @@ export class Pet implements PetStructure {
     public temper: string,
     public gender: string,
     public img: string,
-    public symptoms: string[],
-    public exam: {
-      temperature: number;
-      hr: number;
-      rr: number;
-      membrane: string;
-      cap: number;
-      sap: number;
-      dap: number;
-      map: number;
-    },
-    public meds: {
-      fluids: string;
-      med: string;
-      ml: number;
-      hour: number;
-      via: string;
-    }
+    public symptoms: string,
+    public temperature: number,
+    public hr: number,
+    public rr: number,
+    public membrane: string,
+    public cap: number,
+    public sap: number,
+    public dap: number,
+    public map: number,
+    public fluids: string,
+    public meds: string,
+    public ml: number,
+    public hour: number,
+    public via: string
   ) {}
 }

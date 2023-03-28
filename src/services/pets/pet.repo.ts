@@ -87,13 +87,17 @@ export class PetsRepo implements RepoPet<PetServerResp> {
     const resp = await fetch(url, {
       method: "PATCH",
       body: JSON.stringify(pet),
-      headers: { Authorization: "Bearer " + token },
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-type": "application/json",
+      },
     });
 
     if (!resp.ok)
       throw new Error("Error http: " + resp.status + resp.statusText);
 
     const petData = (await resp.json()) as PetServerResp;
+    console.log("repo", petData);
     return petData;
   }
 

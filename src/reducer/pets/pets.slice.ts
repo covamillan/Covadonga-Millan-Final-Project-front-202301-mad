@@ -4,11 +4,13 @@ import { PetStructure } from "../../models/pet";
 export type State = {
   pets: PetStructure[];
   pet: PetStructure;
+  actualPet: PetStructure;
 };
 
 const initialState: State = {
   pets: [],
   pet: {} as PetStructure,
+  actualPet: {} as PetStructure,
 };
 
 export const petsSlice = createSlice({
@@ -31,6 +33,7 @@ export const petsSlice = createSlice({
 
     createPet(state, action: PayloadAction<PetStructure>) {
       state.pets = [...state.pets, action.payload];
+      state.actualPet = action.payload;
     },
 
     updatePet(state, action: PayloadAction<PetStructure>) {

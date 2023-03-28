@@ -6,6 +6,7 @@ import { petsReducer, State } from "./pets.slice";
 const mockInitialState: State = {
   pet: {} as PetStructure,
   pets: [],
+  actualPet: {} as PetStructure,
 };
 
 const mockFullInitialState = {
@@ -75,17 +76,19 @@ describe("Given pet slice", () => {
           gender: "chique",
           img: "foto",
           symptoms: ["e"],
-          exam: {
-            temperature: 3,
-            hr: 3,
-            rr: 3,
-            membrane: "e",
-            cap: 2,
-            sap: 2,
-            dap: 2,
-            map: 2,
-          },
-          meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
+          temperature: 3,
+          hr: 3,
+          rr: 3,
+          membrane: "e",
+          cap: 2,
+          sap: 2,
+          dap: 2,
+          map: 2,
+          fluids: "a",
+          meds: "a",
+          ml: 4,
+          hour: 4,
+          via: "a",
         },
       };
       const result = petsReducer(mockFullInitialState, mockUpdate);

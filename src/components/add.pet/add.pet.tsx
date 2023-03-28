@@ -1,14 +1,14 @@
 import { SyntheticEvent, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { uploadImg } from "../../firebase/firebase.pet";
 import { usePets } from "../../hooks/usePets";
 import { Pet } from "../../models/pet";
 import { PetsRepo } from "../../services/pets/pet.repo";
 import styles from "./add.pet.module.scss";
 export default function AddPet() {
-  debugger;
   const { id } = useParams();
   const repo = useMemo(() => new PetsRepo(), []);
+  const navigate = useNavigate();
 
   const { petsState, createNewPet, updatePetId } = usePets(repo);
 
@@ -40,7 +40,9 @@ export default function AddPet() {
 
     if (type === "add") {
       await uploadImg(newPet, img);
-      createNewPet(newPet);
+      await createNewPet(newPet);
+
+      await navigate(`/symptoms`);
     } else {
       newPet.id = petInfo!.id;
       updatePetId(newPet.id!, img);
