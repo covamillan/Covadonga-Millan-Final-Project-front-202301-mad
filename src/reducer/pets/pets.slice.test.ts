@@ -1,88 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { mockPets } from "../../components/cards/petMock";
 import { PetStructure } from "../../models/pet";
 import { petsReducer, State } from "./pets.slice";
-
-const mockPet = {
-  id: "e",
-  name: "firulais",
-  kg: 420,
-  age: 7,
-  species: "dog",
-  breed: "chihuahua",
-  owner: "un señor",
-  phone: 2,
-  email: "emilio@je",
-  temper: "malo",
-  gender: "chique",
-  img: "foto8",
-  symptoms: ["e"],
-  exam: {
-    temperature: 3,
-    hr: 3,
-    rr: 3,
-    membrane: "e",
-    cap: 2,
-    sap: 2,
-    dap: 2,
-    map: 2,
-  },
-  meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
-};
-
-const mockPets = [
-  {
-    id: "e",
-    name: "firulais",
-    kg: 420,
-    age: 7,
-    species: "dog",
-    breed: "chihuahua",
-    owner: "un señor",
-    phone: 2,
-    email: "emilio@je",
-    temper: "malo",
-    gender: "chique",
-    img: "foto3",
-    symptoms: ["e"],
-    exam: {
-      temperature: 3,
-      hr: 3,
-      rr: 3,
-      membrane: "e",
-      cap: 23,
-      sap: 232,
-      dap: 42,
-      map: 24,
-    },
-    meds: { fluids: "agfd", med: "fdga", ml: 3244, hour: 4324, via: "a" },
-  },
-  {
-    id: "o",
-    name: "chucho",
-    kg: 42,
-    age: 8,
-    species: "dog",
-    breed: "chihuahua",
-    owner: "una señora",
-    phone: 5,
-    email: "emilio@je",
-    temper: "malo",
-    gender: "chique",
-    img: "foto4",
-    symptoms: ["e"],
-    exam: {
-      temperature: 3,
-      hr: 3,
-      rr: 3,
-      membrane: "e",
-      cap: 2,
-      sap: 432,
-      dap: 2,
-      map: 452,
-    },
-    meds: { fluids: "atr", med: "dsfa", ml: 344, hour: 344, via: "dffa" },
-  },
-];
 
 const mockInitialState: State = {
   pet: {} as PetStructure,
@@ -110,18 +29,12 @@ const mockFullInitialState = {
         hr: 3,
         rr: 3,
         membrane: "e",
-        cap: 23,
-        sap: 2332,
-        dap: 42,
-        map: 24,
+        cap: 2,
+        sap: 2,
+        dap: 2,
+        map: 2,
       },
-      meds: {
-        fluids: "adfgfd",
-        med: "fdgdfa",
-        ml: 324454,
-        hour: 4324,
-        via: "afdg",
-      },
+      meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
     },
 
     {
@@ -144,11 +57,11 @@ const mockFullInitialState = {
         rr: 3,
         membrane: "e",
         cap: 2,
-        sap: 432,
+        sap: 2,
         dap: 2,
-        map: 452,
+        map: 2,
       },
-      meds: { fluids: "atr", med: "dsfa", ml: 344, hour: 344, via: "dffa" },
+      meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
     },
   ],
 } as unknown as State;
@@ -191,7 +104,32 @@ describe("Given pet slice", () => {
     test("Then it should return a payload", () => {
       const mockCreate: PayloadAction<PetStructure> = {
         type: "pet/createPet",
-        payload: mockPet,
+        payload: {
+          id: "e",
+          name: "firulais",
+          kg: 420,
+          age: 7,
+          species: "dog",
+          breed: "chihuahua",
+          owner: "un señor",
+          phone: 2,
+          email: "emilio@je",
+          temper: "malo",
+          gender: "chique",
+          img: "foto8",
+          symptoms: ["e"],
+          exam: {
+            temperature: 3,
+            hr: 3,
+            rr: 3,
+            membrane: "e",
+            cap: 2,
+            sap: 2,
+            dap: 2,
+            map: 2,
+          },
+          meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
+        },
       };
       const result = petsReducer(mockInitialState, mockCreate);
       expect(result.pets[0]).toBe(mockCreate.payload);

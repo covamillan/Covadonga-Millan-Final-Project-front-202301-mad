@@ -1,66 +1,68 @@
+/* eslint-disable testing-library/no-render-in-setup */
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { Cards } from "./cards";
 import { render, screen } from "@testing-library/react";
 import { store } from "../../store/store";
 
+const mockPet = {
+  id: "e",
+  name: "firulais",
+  kg: 420,
+  age: 7,
+  species: "dog",
+  breed: "chihuahua",
+  owner: "un señor",
+  phone: 2,
+  email: "emilio@je",
+  temper: "malo",
+  gender: "chique",
+  img: "foto8",
+  symptoms: ["e"],
+  exam: {
+    temperature: 3,
+    hr: 3,
+    rr: 3,
+    membrane: "e",
+    cap: 2,
+    sap: 2,
+    dap: 2,
+    map: 2,
+  },
+  meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
+};
+
+const mockPet2 = {
+  id: "d",
+  name: "sdada",
+  kg: 42340,
+  age: 734,
+  species: "cat",
+  breed: "ffsdf",
+  owner: "un",
+  phone: 2,
+  email: "dfg@je",
+  temper: "mafdglo",
+  gender: "chigdque",
+  img: "dgfg",
+  symptoms: ["e"],
+  exam: {
+    temperature: 3,
+    hr: 3,
+    rr: 3,
+    membrane: "e",
+    cap: 22,
+    sap: 21,
+    dap: 23,
+    map: 2,
+  },
+  meds: { fluids: "a", med: "aff", ml: 4, hour: 42, via: "a" },
+};
+
 jest.mock("../../hooks/usePets", () => ({
   usePets: () => ({
     petsState: {
-      pets: [
-        {
-          id: "e",
-          name: "firulais",
-          kg: 420,
-          age: 7,
-          species: "dog",
-          breed: "chihuahua",
-          owner: "un señor",
-          phone: 2,
-          email: "emilio@je",
-          temper: "malo",
-          gender: "chique",
-          img: "foto8",
-          symptoms: ["e"],
-          exam: {
-            temperature: 3,
-            hr: 3,
-            rr: 3,
-            membrane: "e",
-            cap: 2,
-            sap: 2,
-            dap: 2,
-            map: 2,
-          },
-          meds: { fluids: "a", med: "a", ml: 4, hour: 4, via: "a" },
-        },
-        {
-          id: "f",
-          name: "michi",
-          kg: 360,
-          age: 2,
-          species: "cat",
-          breed: "siames",
-          owner: "otro señor",
-          phone: 5,
-          email: "emilio@noje",
-          temper: "malo",
-          gender: "chique",
-          img: "foto9",
-          symptoms: ["e"],
-          exam: {
-            temperature: 3,
-            hr: 3,
-            rr: 3,
-            membrane: "e",
-            cap: 2,
-            sap: 2342,
-            dap: 2,
-            map: 342,
-          },
-          meds: { fluids: "avxc", med: "da", ml: 4, hour: 4, via: "afds" },
-        },
-      ],
+      pets: [mockPet, mockPet2],
     },
     loadPets: jest.fn(),
   }),
