@@ -43,7 +43,7 @@ describe("Given the add symptoms component", () => {
       );
     });
   });
-  describe("When we render the component and do an update", () => {
+  describe("When we render it and do an update", () => {
     const mockRepo = {
       updatePetRepo: jest.fn(),
     } as unknown as PetsRepo;
@@ -51,23 +51,20 @@ describe("Given the add symptoms component", () => {
       const elements = [screen.getByRole("button")];
       await fireEvent.click(elements[0]);
     });
-
+    test("Then it should contain a textbox", () => {
+      const elements = [screen.getAllByRole("textbox")];
+      expect(elements.length).toBe(1);
+    });
+    test("Then it should contain a heading", () => {
+      const elements = [screen.getAllByRole("heading")];
+      expect(elements.length).toBe(1);
+    });
     test("Then it should call update function", async () => {
       await act(async () => {
         fireEvent.click(screen.getByRole("button"));
       });
       const { updatePetId } = usePets(mockRepo);
       expect(updatePetId).toHaveBeenCalledTimes(1);
-    });
-
-    test("Then it should contain a heading", () => {
-      const elements = [screen.getAllByRole("heading")];
-      expect(elements.length).toBe(1);
-    });
-
-    test("Then it should contain a textbox", () => {
-      const elements = [screen.getAllByRole("textbox")];
-      expect(elements.length).toBe(1);
     });
   });
 });
