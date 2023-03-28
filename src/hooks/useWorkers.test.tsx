@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/no-unnecessary-act */
 import { act, fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { WorkerStructure } from "../models/worker";
 import { WorkersRepo } from "../services/workers/workers.repo";
