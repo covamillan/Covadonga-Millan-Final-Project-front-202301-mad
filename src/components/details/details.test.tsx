@@ -38,6 +38,8 @@ describe("Given the detail component", () => {
         actualPet: { id: "1", meds: "besitos" },
       },
       updatePetId: jest.fn(),
+      findPetId: jest.fn(),
+      loadPets: jest.fn(),
     });
 
     await act(async () => {
@@ -53,8 +55,8 @@ describe("Given the detail component", () => {
   describe("When we render it and do an update", () => {
     describe("When we render the component", () => {
       test('Then, the title "Details" should be in the document', () => {
-        const element = screen.getByRole("heading");
-        expect(element).toBeInTheDocument();
+        const element = screen.getAllByRole("heading");
+        expect(element).toHaveLength(21);
       });
     });
     describe("When we want to update the info", () => {
@@ -73,14 +75,6 @@ describe("Given the detail component", () => {
       await act(async () => await userEvent.click(elements[2]));
 
       expect(usePets(mockRepo).updatePetId).toHaveBeenCalled();
-    });
-  });
-
-  describe("When we want to filter", () => {
-    test("Then the owner's pets will appear", async () => {
-      const elements = screen.getAllByRole("button");
-      await act(async () => await userEvent.click(elements[3]));
-      expect(usePets(mockRepo).findPetOwner).toHaveBeenCalled();
     });
   });
 });

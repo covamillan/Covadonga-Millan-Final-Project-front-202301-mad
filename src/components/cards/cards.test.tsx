@@ -2,10 +2,10 @@
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { Cards } from "./cards";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { store } from "../../store/store";
 import { mockPet } from "../../models/pet.mock";
-import { usePets } from "../../hooks/usePets";
+import { PetStructure } from "../../models/pet";
 
 const mockPet2 = {
   id: "d",
@@ -35,17 +35,12 @@ const mockPet2 = {
   hour: 42,
   via: "a",
 };
-const mockRepo = {
-  url: "testing",
-  findPetRepo: jest.fn(),
-  updatePetRepo: jest.fn(),
-  findOwnerRepo: jest.fn(),
-} as unknown as PetsRepo;
 
+jest.mock("../card/card.tsx");
 jest.mock("../../hooks/usePets", () => ({
   usePets: () => ({
     petsState: {
-      pets: [mockPet, mockPet2],
+      pets: [mockPet, mockPet2] as unknown as PetStructure,
     },
     loadPets: jest.fn(),
   }),

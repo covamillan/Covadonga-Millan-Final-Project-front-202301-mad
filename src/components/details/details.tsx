@@ -12,7 +12,7 @@ export default function Details() {
 
   useEffect(() => {
     if (!id) return;
-    findPetId(id);
+    findPetId(id!);
   }, [findPetId, id]);
 
   const handleEdit = async (event: SyntheticEvent) => {
