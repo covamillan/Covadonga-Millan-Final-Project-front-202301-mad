@@ -31,7 +31,6 @@ export function AppRouter() {
             element={<AddSymptoms></AddSymptoms>}
           ></Route>
         }
-        {/* <Route path={"*"} element={<Error></Error>}></Route> */}
       </Routes>
     </Suspense>
   );
