@@ -64,7 +64,7 @@ describe("Given pet slice", () => {
     test("Then it should return a payload", () => {
       const mockCreate: PayloadAction<PetStructure> = {
         type: "pet/createPet",
-        payload: mockPets,
+        payload: mockPet,
       };
       const result = petsReducer(mockInitialState, mockCreate);
       expect(result.pets[0]).toBe(mockCreate.payload);

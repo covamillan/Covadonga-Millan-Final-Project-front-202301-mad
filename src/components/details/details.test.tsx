@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-unnecessary-act */
-import { screen, act, fireEvent, render } from "@testing-library/react";
+import { screen, act, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
@@ -40,9 +40,11 @@ describe("Given the detail component", () => {
       updatePetId: jest.fn(),
       findPetId: jest.fn(),
       loadPets: jest.fn(),
+      findPetOwner: jest.fn(),
     });
 
     await act(async () => {
+      // eslint-disable-next-line testing-library/no-render-in-setup
       render(
         <Provider store={store}>
           <MemoryRouter>
@@ -75,6 +77,18 @@ describe("Given the detail component", () => {
       await act(async () => await userEvent.click(elements[2]));
 
       expect(usePets(mockRepo).updatePetId).toHaveBeenCalled();
+    });
+  });
+  describe("When", () => {
+    test("Then the symptoms will be updated", async () => {
+      const elements = screen.getAllByRole("button");
+      await act(async () => await userEvent.click(elements[0]));
+    });
+  });
+  describe("When we load the pets", () => {
+    test("Then the details will be showed", async () => {
+      const elements = screen.getAllByRole("button");
+      await act(async () => await userEvent.click(elements[1]));
     });
   });
 });

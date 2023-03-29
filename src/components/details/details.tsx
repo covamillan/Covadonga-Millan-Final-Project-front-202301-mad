@@ -11,7 +11,7 @@ export default function Details() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) throw new Error();
     findPetId(id!);
   }, [findPetId, id]);
 
@@ -29,7 +29,6 @@ export default function Details() {
   const findOwner = async (event: SyntheticEvent) => {
     event.preventDefault();
     findPetOwner(petsState.pet.owner);
-    navigate(`/owner/${petsState.pet.owner}`);
   };
 
   return (
