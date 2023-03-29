@@ -41,7 +41,6 @@ export default function AddPet() {
     if (type === "add") {
       await uploadImg(newPet, img);
       await createNewPet(newPet);
-      console.log(newPet.id);
       navigate(`/home`);
     } else {
       newPet.id = petInfo!.id;
