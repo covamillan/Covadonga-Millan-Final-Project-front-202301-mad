@@ -11,8 +11,7 @@ export default function Details() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!id) throw new Error();
-    findPetId(id);
+    findPetId(id!);
   }, [findPetId, id]);
 
   const handleEdit = async (event: SyntheticEvent) => {

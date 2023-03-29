@@ -21,6 +21,7 @@ describe("Given the register component", () => {
     test("Then it should contain the button role", async () => {
       const elements = [screen.getByRole("button")];
       await fireEvent.click(elements[0]);
+      expect(elements).toHaveLength(1);
     });
 
     test("Then it should contain the heading role", () => {

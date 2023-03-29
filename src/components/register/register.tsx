@@ -8,9 +8,8 @@ import styles from "./register.module.scss";
 export default function Register() {
   const repo = useMemo(() => new WorkersRepo(), []);
   const { workerRegister } = useWorkers(repo);
-  const navigate = useNavigate();
 
-  const handleSubmit = (event: SyntheticEvent) => {
+  const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
     const formData = event.currentTarget as HTMLFormElement;
     const inputs = formData.querySelectorAll("input");
@@ -20,8 +19,7 @@ export default function Register() {
       password: inputs[1].value,
     };
 
-    workerRegister(newWorker);
-    formData.reset();
+    await workerRegister(newWorker);
   };
   return (
     <div className={styles.register}>
@@ -41,9 +39,7 @@ export default function Register() {
           required
           placeholder="Password"
         />
-        <button type="submit" onClick={() => navigate(`/login`)}>
-          Register
-        </button>
+        <button type="submit">Register</button>
         <div>
           <h3>Already have an account?</h3>
           <Link to="/login">Login</Link>

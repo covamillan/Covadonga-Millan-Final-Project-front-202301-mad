@@ -1,16 +1,21 @@
 /* eslint-disable testing-library/no-unnecessary-act */
+import { configureStore } from "@reduxjs/toolkit";
 import { screen, act, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { usePets } from "../../hooks/usePets";
+import { PetStructure } from "../../models/pet";
+import { petsReducer } from "../../reducer/pets/pets.slice";
+import { workersReducer } from "../../reducer/workers/workers.slice";
 import { PetsRepo } from "../../services/pets/pet.repo";
-import { store } from "../../store/store";
 import Details from "./details";
+import { mockPetEmpty } from "../../models/pet.mock";
 
 jest.mock("../../hooks/usePets.ts");
 jest.mock("../../firebase/firebase.pet.ts");
 
+let mockParams = { id: "1" };
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => jest.fn().mockImplementation(() => ({})),
@@ -23,7 +28,19 @@ const mockRepo = {
   updatePetRepo: jest.fn(),
   findOwnerRepo: jest.fn(),
 } as unknown as PetsRepo;
-const mockParams = { id: "1" };
+const mockStore = configureStore({
+  reducer: {
+    workers: workersReducer,
+    pets: petsReducer,
+  },
+  preloadedState: {
+    pets: {
+      pet: mockPetEmpty,
+      pets: [],
+      actualPet: {} as PetStructure,
+    },
+  },
+});
 
 describe("Given the detail component", () => {
   beforeEach(async () => {
@@ -46,7 +63,7 @@ describe("Given the detail component", () => {
     await act(async () => {
       // eslint-disable-next-line testing-library/no-render-in-setup
       render(
-        <Provider store={store}>
+        <Provider store={mockStore}>
           <MemoryRouter>
             <Details />
           </MemoryRouter>

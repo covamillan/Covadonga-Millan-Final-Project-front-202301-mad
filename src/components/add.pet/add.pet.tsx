@@ -135,8 +135,8 @@ export default function AddPet() {
           <label htmlFor="temper" className={styles.species}>
             Temper
             <select
-              name="Temper"
-              id="Temper"
+              name="temper"
+              id="temper"
               defaultValue={petInfo?.temper}
               required
             >
