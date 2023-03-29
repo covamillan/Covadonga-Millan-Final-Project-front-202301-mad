@@ -100,7 +100,6 @@ export class PetsRepo implements RepoPet<PetServerResp> {
       throw new Error("Error http: " + resp.status + resp.statusText);
 
     const petData = (await resp.json()) as PetServerResp;
-    console.log("repo", petData);
     return petData;
   }
 

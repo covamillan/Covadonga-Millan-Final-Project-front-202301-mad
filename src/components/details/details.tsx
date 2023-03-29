@@ -73,8 +73,8 @@ export default function Details() {
           <button type="submit" onClick={findOwner}>
             <h3>{petsState.pet.owner}</h3>
           </button>
-          <h3>{petsState.pet.age}</h3>
-          <h3>{petsState.pet.age}</h3>
+          <h3>{petsState.pet.email}</h3>
+          <h3>{petsState.pet.phone}</h3>
         </div>
       </div>
       <div className={styles.middle}>
@@ -104,14 +104,14 @@ export default function Details() {
       </div>
       <div className={styles.down}>
         <h2>
-          Fluids {petsState.pet.fluids} {petsState.pet.ml}ml/kg/h
+          Fluids: {petsState.pet.fluids} {petsState.pet.ml}ml/kg/h
         </h2>
         <div className={styles.meds}>
           <h3>
             {petsState.pet.meds} -{petsState.pet.via}
           </h3>
           <h3>
-            {petsState.pet.ml}ml/{petsState.pet.hour}/hour
+            {petsState.pet.ml}ml/{petsState.pet.hour}hour
           </h3>
         </div>
       </div>

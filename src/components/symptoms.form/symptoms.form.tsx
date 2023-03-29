@@ -42,41 +42,125 @@ export default function AddSymptoms() {
         <section className={styles.container}>
           <div className={styles.left}>
             <label htmlFor="symptoms">Symptoms</label>
-            <input type="text" name="symptoms" id="symptoms" required />
+            <input
+              type="text"
+              name="symptoms"
+              id="symptoms"
+              defaultValue={petsState?.pet.symptoms}
+              required
+            />
 
             <label htmlFor="temperature">Temperature</label>
-            <input type="number" name="temperature" id="temperature" required />
+            <input
+              type="number"
+              name="temperature"
+              id="temperature"
+              defaultValue={petsState?.pet.temperature}
+              required
+            />
 
             <label htmlFor="hr">Heart rate</label>
-            <input type="number" name="hr" id="hr" required />
+            <input
+              type="number"
+              name="hr"
+              id="hr"
+              defaultValue={petsState?.pet.hr}
+              required
+            />
 
             <label htmlFor="rr">Respiratory rate</label>
-            <input type="number" name="rr" id="rr" required />
+            <input
+              type="number"
+              name="rr"
+              id="rr"
+              defaultValue={petsState?.pet.rr}
+              required
+            />
 
             <label htmlFor="sap">Systolic arterial pressure</label>
-            <input type="number" name="sap" id="sap" required />
+            <input
+              type="number"
+              name="sap"
+              id="sap"
+              defaultValue={petsState?.pet.sap}
+              required
+            />
 
             <label htmlFor="dap">Dyastolic arterial pressure</label>
-            <input type="number" name="dap" id="dap" required />
+            <input
+              type="number"
+              name="dap"
+              id="dap"
+              defaultValue={petsState?.pet.dap}
+              required
+            />
 
             <label htmlFor="map">Mean arterial pressure</label>
-            <input type="number" name="map" id="map" required />
+            <input
+              type="number"
+              name="map"
+              id="map"
+              defaultValue={petsState?.pet.map}
+              required
+            />
           </div>
           <div className={styles.right}>
             <label htmlFor="membrane">Mucose membrane</label>
-            <input type="text" name="membrane" id="membrane" required />
+            <input
+              type="text"
+              name="membrane"
+              id="membrane"
+              defaultValue={petsState?.pet.membrane}
+              required
+            />
             <label htmlFor="cr">Capillary refill</label>
-            <input type="number" name="cr" id="cr" required />
-            <label htmlFor="fluids"> Fluids</label>
-            <input type="text" name="fluids" id="fliuds" required />
+            <input
+              type="number"
+              name="cap"
+              id="cap"
+              defaultValue={petsState?.pet.cap}
+              required
+            />
+            <label htmlFor="fluids">Fluids</label>
+            <input
+              type="text"
+              name="fluids"
+              id="fluids"
+              defaultValue={petsState?.pet.fluids}
+              required
+            />
             <label htmlFor="med">Medication</label>
-            <input type="text" name="med" id="med" required />
+            <input
+              type="text"
+              name="med"
+              id="med"
+              defaultValue={petsState?.pet.meds}
+              required
+            />
             <label htmlFor="ml">Milliliters</label>
-            <input type="number" name="ml" id="ml" required />
+            <input
+              type="number"
+              name="ml"
+              id="ml"
+              defaultValue={petsState?.pet.ml}
+              required
+            />
             <label htmlFor="hour">Hour</label>
-            <input type="number" name="hour" id="hour" required />
+            <input
+              type="number"
+              name="hour"
+              id="hour"
+              defaultValue={petsState?.pet.hour}
+              required
+            />
             <label htmlFor="via">Via</label>
-            <input type="text" name="via" id="via" required />
+            <input
+              type="text"
+              name="via"
+              id="via"
+              defaultValue={petsState?.pet.via}
+              required
+            />
           </div>
         </section>
         <button type="submit">Add</button>
