@@ -41,7 +41,7 @@ export default function AddPet() {
     if (type === "add") {
       await uploadImg(newPet, img);
       await createNewPet(newPet);
-      navigate(`/symptoms/${newPet.id}`);
+      navigate(`/update/symptoms/${newPet.id}`);
     } else {
       newPet.id = petInfo!.id;
       await updatePetId(newPet.id!, newPet);
