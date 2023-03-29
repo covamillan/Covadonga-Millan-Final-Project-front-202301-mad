@@ -31,7 +31,10 @@ export class PetsRepo implements RepoPet<PetServerResp> {
 
     const resp = await fetch(url, {
       method: "GET",
-      headers: { Authorization: "Bearer " + token },
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-type": "application/json",
+      },
     });
 
     if (!resp.ok)

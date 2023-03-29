@@ -31,7 +31,7 @@ export default function AddSymptoms() {
       hour: (formInfo.elements[12] as HTMLFormElement).value,
       via: (formInfo.elements[13] as HTMLFormElement).value,
     };
-    updatePetId(petsState.actualPet.id, newSymptom);
+    updatePetId(petsState.pet.id, newSymptom);
     navigate("/home");
   };
 

@@ -14,7 +14,7 @@ export function Card({ pet }: { pet: PetStructure }) {
   return (
     <li className={styles.card}>
       <div>
-        <Link to={`/details/${pet.id}`} className={styles.detail}>
+        <Link to={`/find/${pet.id}`}>
           <h4>{pet.name.charAt(0).toUpperCase() + pet.name.slice(1)}</h4>
         </Link>
 

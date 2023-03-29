@@ -3,6 +3,11 @@
   flex-direction: row;
   gap: 10.4rem;
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   div {
     display: flex;
     padding-bottom: 1rem;

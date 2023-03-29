@@ -9,7 +9,7 @@ export default function Register() {
   const repo = useMemo(() => new WorkersRepo(), []);
   const { workerRegister } = useWorkers(repo);
 
-  const handleSubmit = (event: SyntheticEvent) => {
+  const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
     const formData = event.currentTarget as HTMLFormElement;
     const inputs = formData.querySelectorAll("input");
@@ -19,8 +19,7 @@ export default function Register() {
       password: inputs[1].value,
     };
 
-    workerRegister(newWorker);
-    formData.reset();
+    await workerRegister(newWorker);
   };
   return (
     <div className={styles.register}>

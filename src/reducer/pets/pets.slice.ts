@@ -22,9 +22,8 @@ export const petsSlice = createSlice({
       state.pets = action.payload;
     },
 
-    findPet(state, action: PayloadAction<PetStructure["id"]>) {
-      const actualData = [...state.pets];
-      state.pets = actualData.filter((item) => item.id === action.payload);
+    findPet(state, action: PayloadAction<PetStructure>) {
+      state.pet = action.payload;
     },
 
     findOwner(state, action: PayloadAction<PetStructure[]>) {
@@ -37,10 +36,7 @@ export const petsSlice = createSlice({
     },
 
     updatePet(state, action: PayloadAction<PetStructure>) {
-      const actualData = [...state.pets];
-      state.pets = actualData.map((item) =>
-        item.id === action.payload.id ? { ...item, ...action.payload } : item
-      );
+      state.actualPet.id = action.payload.id;
     },
 
     deletePet(state, action: PayloadAction<PetStructure["id"]>) {

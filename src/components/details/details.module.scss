@@ -1,0 +1,134 @@
+.details {
+  height: 88.9vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 4rem;
+  padding-right: 8.1rem;
+
+  img {
+    height: 2rem;
+  }
+
+  button {
+    justify-content: end;
+    height: fit-content;
+    font-size: 16px;
+  }
+
+  .up {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: rgba(20, 88, 97, 1);
+    font-size: 14px;
+    padding-bottom: 1rem;
+  }
+
+  .petinfo {
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(217, 217, 217, 0.4);
+    border-radius: 0.4rem;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    font-size: 18px;
+    justify-content: center;
+    .image {
+      height: 8rem;
+      border-radius: 0.4rem;
+    }
+
+    .name {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faces {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    text-align: end;
+  }
+
+  .middle {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    h2 {
+      color: rgba(20, 88, 97, 1);
+    }
+
+    button {
+      height: fit-content;
+      font-size: 16px;
+    }
+
+    .midedit {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      font-size: 12px;
+      justify-content: space-around;
+
+      .symptoms {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      .exam {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        justify-content: space-between;
+      }
+
+      h3 {
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  .down {
+    border-top: 1px solid rgba(20, 88, 97, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h2 {
+      color: rgba(20, 88, 97, 1);
+      padding-top: 0.5rem;
+    }
+
+    h3 {
+      padding-left: 1rem;
+    }
+
+    .meds {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

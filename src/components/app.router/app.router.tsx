@@ -5,7 +5,7 @@ const Login = lazy(() => import("../login/login"));
 const Register = lazy(() => import("../register/register"));
 const Home = lazy(() => import("../home/home"));
 const AddPet = lazy(() => import("../add.pet/add.pet"));
-// const Detail = lazy(() => import("../detail/detail");
+const Details = lazy(() => import("../details/details"));
 const AddSymptoms = lazy(() => import("../symptoms.form/symptoms.form"));
 
 export function AppRouter() {
@@ -23,7 +23,14 @@ export function AppRouter() {
             element={<AddSymptoms></AddSymptoms>}
           ></Route>
         }
-        {/* <Route path={"/detail"} element={<Detail></Detail>}></Route> */}
+        {<Route path={"/find/:id"} element={<Details></Details>}></Route>}
+        {<Route path={"/update/:id"} element={<AddPet></AddPet>}></Route>}
+        {
+          <Route
+            path={"/update/symptoms/:id"}
+            element={<AddSymptoms></AddSymptoms>}
+          ></Route>
+        }
         {/* <Route path={"*"} element={<Error></Error>}></Route> */}
       </Routes>
     </Suspense>
