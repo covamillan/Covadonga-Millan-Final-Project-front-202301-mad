@@ -10,8 +10,9 @@ export function Cards() {
   useEffect(() => {
     loadPets();
   }, [loadPets]);
-  const dogs = petsState.pets.filter((pet) => pet.species === "dog");
-  const cats = petsState.pets.filter((pet) => pet.species === "cat");
+  const dogs = petsState.pets.filter((pet) => pet.species === "Dog");
+  const cats = petsState.pets.filter((pet) => pet.species === "Cat");
+  console.log(dogs, cats);
 
   return (
     <div className={styles.cards}>
@@ -24,8 +25,8 @@ export function Cards() {
           <h5 className={styles.status}> Status</h5>
         </div>
 
-        {dogs.map((dog) => (
-          <Card key={dog.id} pet={dog}></Card>
+        {dogs.map((Dog) => (
+          <Card key={Dog.id} pet={Dog}></Card>
         ))}
       </section>
 
@@ -37,8 +38,8 @@ export function Cards() {
           <h5 className={styles.status}> Status</h5>
         </div>
 
-        {cats.map((cat) => (
-          <Card key={cat.id} pet={cat}></Card>
+        {cats.map((Cat) => (
+          <Card key={Cat.id} pet={Cat}></Card>
         ))}
       </section>
     </div>

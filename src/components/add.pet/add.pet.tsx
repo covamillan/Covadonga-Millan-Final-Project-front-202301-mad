@@ -41,11 +41,11 @@ export default function AddPet() {
     if (type === "add") {
       await uploadImg(newPet, img);
       await createNewPet(newPet);
-
-      navigate(`/symptoms`);
+      navigate(`/symptoms/${newPet.id}`);
     } else {
       newPet.id = petInfo!.id;
-      updatePetId(newPet.id!, img);
+      await updatePetId(newPet.id!, newPet);
+      navigate(`/home`);
     }
 
     formInfo.reset();
@@ -56,39 +56,90 @@ export default function AddPet() {
       <form onSubmit={handleSubmit}>
         <h1>Add pet</h1>
         <label htmlFor="name">Name</label>
-        <input type="text" name="name" id="name" required />
+        <input
+          type="text"
+          name="name"
+          id="name"
+          defaultValue={petInfo?.name}
+          required
+        />
 
         <label htmlFor="owner">Owner</label>
-        <input type="text" name="owner" id="owner" required />
+        <input
+          type="text"
+          name="owner"
+          id="owner"
+          defaultValue={petInfo?.owner}
+          required
+        />
 
         <label htmlFor="age">Age (years)</label>
-        <input type="number" name="age" id="age" required />
+        <input
+          type="number"
+          name="age"
+          id="age"
+          defaultValue={petInfo?.age}
+          required
+        />
 
         <label htmlFor="species" className={styles.species}>
           Species
-          <select name="species" id="species" required>
+          <select
+            name="species"
+            id="species"
+            defaultValue={petInfo?.species}
+            required
+          >
             <option value="">Choose an option</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
           </select>
         </label>
 
         <label htmlFor="breed">Breed</label>
-        <input type="text" name="breed" id="breed" />
+        <input
+          type="text"
+          name="breed"
+          id="breed"
+          defaultValue={petInfo?.breed}
+        />
 
         <label htmlFor="kg">Kg</label>
-        <input type="text" name="kg" id="kg" required />
+        <input
+          type="text"
+          name="kg"
+          id="kg"
+          defaultValue={petInfo?.kg}
+          required
+        />
 
         <label htmlFor="phone">Phone</label>
-        <input type="text" name="phone" id="phone" required />
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          defaultValue={petInfo?.phone}
+          required
+        />
 
         <label htmlFor="email">Email</label>
-        <input type="text" name="email" id="email" required />
+        <input
+          type="text"
+          name="email"
+          id="email"
+          defaultValue={petInfo?.email}
+          required
+        />
 
         <div className={styles.bottom}>
           <label htmlFor="temper" className={styles.species}>
             Temper
-            <select name="Temper" id="Temper" required>
+            <select
+              name="Temper"
+              id="Temper"
+              defaultValue={petInfo?.temper}
+              required
+            >
               <option value="">Choose an option</option>
               <option value="good">Good</option>
               <option value="bad">Bad</option>
@@ -96,9 +147,14 @@ export default function AddPet() {
             </select>
           </label>
 
-          <label htmlFor="temper" className={styles.species}>
+          <label htmlFor="gender" className={styles.species}>
             Gender
-            <select name="Temper" id="Temper" required>
+            <select
+              name="gender"
+              id="gender"
+              defaultValue={petInfo?.gender}
+              required
+            >
               <option value="">Choose an option</option>
               <option value="good">Female</option>
               <option value="bad">Male</option>

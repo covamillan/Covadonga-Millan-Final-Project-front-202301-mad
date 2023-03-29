@@ -4,10 +4,12 @@ import { useWorkers } from "../../hooks/useWorkers";
 import { Worker } from "../../models/worker";
 import { WorkersRepo } from "../../services/workers/workers.repo";
 import styles from "./register.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const repo = useMemo(() => new WorkersRepo(), []);
   const { workerRegister } = useWorkers(repo);
+  const navigate = useNavigate();
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -40,7 +42,9 @@ export default function Register() {
           required
           placeholder="Password"
         />
-        <button type="submit">Register</button>
+        <button type="submit" onClick={() => navigate(`/login`)}>
+          Register
+        </button>
         <div>
           <h3>Already have an account?</h3>
           <Link to="/login">Login</Link>

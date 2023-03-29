@@ -1,5 +1,6 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import { screen, act, fireEvent, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { usePets } from "../../hooks/usePets";
@@ -16,7 +17,14 @@ jest.mock("react-router-dom", () => ({
   useParams: () => mockParams,
 }));
 
+const mockRepo = {
+  url: "testing",
+  findPetRepo: jest.fn(),
+  updatePetRepo: jest.fn(),
+  findOwnerRepo: jest.fn(),
+} as unknown as PetsRepo;
 const mockParams = { id: "1" };
+
 describe("Given the detail component", () => {
   beforeEach(async () => {
     (usePets as jest.Mock).mockReturnValue({
@@ -43,27 +51,36 @@ describe("Given the detail component", () => {
     });
   });
   describe("When we render it and do an update", () => {
-    const mockRepo = {
-      updatePetRepo: jest.fn(),
-    } as unknown as PetsRepo;
-    test("Then it should contain a button", async () => {
-      const elements = [screen.getByRole("button")];
-      await fireEvent.click(elements[0]);
-    });
-    test("Then it should contain a textbox", () => {
-      const elements = [screen.getAllByRole("textbox")];
-      expect(elements.length).toBe(1);
-    });
-    test("Then it should contain a heading", () => {
-      const elements = [screen.getAllByRole("heading")];
-      expect(elements.length).toBe(1);
-    });
-    test("Then it should call update function", async () => {
-      await act(async () => {
-        fireEvent.click(screen.getByRole("button"));
+    describe("When we render the component", () => {
+      test('Then, the title "Details" should be in the document', () => {
+        const element = screen.getByRole("heading");
+        expect(element).toBeInTheDocument();
       });
-      const { updatePetId } = usePets(mockRepo);
-      expect(updatePetId).toHaveBeenCalledTimes(1);
+    });
+    describe("When we want to update the info", () => {
+      test("Then the info will be updated", async () => {
+        const elements = screen.getAllByRole("button");
+        await act(async () => await userEvent.click(elements[2]));
+
+        expect(usePets(mockRepo).updatePetId).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe("When we want to update the symptoms", () => {
+    test("Then the symptoms will be updated", async () => {
+      const elements = screen.getAllByRole("button");
+      await act(async () => await userEvent.click(elements[2]));
+
+      expect(usePets(mockRepo).updatePetId).toHaveBeenCalled();
+    });
+  });
+
+  describe("When we want to filter", () => {
+    test("Then the owner's pets will appear", async () => {
+      const elements = screen.getAllByRole("button");
+      await act(async () => await userEvent.click(elements[3]));
+      expect(usePets(mockRepo).findPetOwner).toHaveBeenCalled();
     });
   });
 });

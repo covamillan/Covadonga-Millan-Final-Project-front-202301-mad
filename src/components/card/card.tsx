@@ -1,4 +1,4 @@
-import { SyntheticEvent, useMemo } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { usePets } from "../../hooks/usePets";
 import { PetStructure } from "../../models/pet";
@@ -6,19 +6,15 @@ import { PetsRepo } from "../../services/pets/pet.repo";
 import styles from "./card.module.scss";
 export function Card({ pet }: { pet: PetStructure }) {
   const repo = useMemo(() => new PetsRepo(), []);
-  const { deletePetId, findPetId } = usePets(repo);
+  const { deletePetId } = usePets(repo);
   const handleDelete = () => {
     deletePetId(pet.id);
-  };
-  const findPet = async (event: SyntheticEvent) => {
-    event.preventDefault();
-    findPetId(pet.id);
   };
 
   return (
     <li className={styles.card}>
       <div>
-        <Link to={`/find/${pet.id}`} onClick={findPet}>
+        <Link to={`/find/${pet.id}`}>
           <h4>{pet.name.charAt(0).toUpperCase() + pet.name.slice(1)}</h4>
         </Link>
 

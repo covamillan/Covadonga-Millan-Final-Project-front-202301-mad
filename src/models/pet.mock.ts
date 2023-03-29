@@ -12,7 +12,7 @@ export const mockPets = [
     temper: "malsdffo",
     gender: "chifdsdque",
     img: "fosdfsto3",
-    symptoms: ["e"],
+    symptoms: "e",
     temperature: 3,
     hr: 3,
     rr: 3,

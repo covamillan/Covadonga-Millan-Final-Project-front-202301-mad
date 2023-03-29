@@ -2,9 +2,10 @@
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { Cards } from "./cards";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { store } from "../../store/store";
 import { mockPet } from "../../models/pet.mock";
+import { usePets } from "../../hooks/usePets";
 
 const mockPet2 = {
   id: "d",
@@ -34,6 +35,12 @@ const mockPet2 = {
   hour: 42,
   via: "a",
 };
+const mockRepo = {
+  url: "testing",
+  findPetRepo: jest.fn(),
+  updatePetRepo: jest.fn(),
+  findOwnerRepo: jest.fn(),
+} as unknown as PetsRepo;
 
 jest.mock("../../hooks/usePets", () => ({
   usePets: () => ({
@@ -58,7 +65,7 @@ describe("Given cards component", () => {
   describe("When we render it", () => {
     test("Then the pet name should be in the doc", () => {
       const heading = screen.getAllByRole("heading");
-      expect(heading).toHaveLength(11);
+      expect(heading).toHaveLength(9);
     });
 
     test("Then the dogs section should be in the doc", () => {

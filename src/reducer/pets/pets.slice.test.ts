@@ -29,9 +29,9 @@ describe("Given pet slice", () => {
 
   describe("When we use the find pet method", () => {
     test("Then it should return a payload", () => {
-      const mockFind: PayloadAction<PetStructure["id"]> = {
+      const mockFind: PayloadAction<PetStructure> = {
         type: "pet/findPet",
-        payload: "e",
+        payload: mockPet.id,
       };
       const result = petsReducer(mockFullInitialState, mockFind);
       expect(result.pets[0]["id"]).toEqual(mockFind.payload);
@@ -42,10 +42,21 @@ describe("Given pet slice", () => {
     test("Then it should return a payload", () => {
       const mockFindOwner: PayloadAction<PetStructure["owner"]> = {
         type: "pet/findOwner",
-        payload: "un señor",
+        payload: "u",
       };
       const result = petsReducer(mockFullInitialState, mockFindOwner);
-      expect(result.pets).toEqual(mockFindOwner.payload);
+      expect(result.pets[0]).toEqual(mockFindOwner.payload);
+    });
+  });
+
+  describe("When we use the update method", () => {
+    test("Then it should return a payload", () => {
+      const mockUpdate: PayloadAction<PetStructure> = {
+        type: "pet/updatePet",
+        payload: mockPets[0],
+      };
+      const result = petsReducer(mockFullInitialState, mockUpdate);
+      expect(result.pets[0]).toEqual(mockUpdate.payload);
     });
   });
 
@@ -53,48 +64,10 @@ describe("Given pet slice", () => {
     test("Then it should return a payload", () => {
       const mockCreate: PayloadAction<PetStructure> = {
         type: "pet/createPet",
-        payload: mockPet,
+        payload: mockPets,
       };
       const result = petsReducer(mockInitialState, mockCreate);
       expect(result.pets[0]).toBe(mockCreate.payload);
-    });
-  });
-
-  describe("When we use the update pet method", () => {
-    test("Then it should return a payload", () => {
-      const mockUpdate: PayloadAction<PetStructure> = {
-        type: "pet/updatePet",
-        payload: {
-          id: "e",
-          name: "chencho",
-          kg: 420,
-          age: 7,
-          species: "dog",
-          breed: "chihuahua",
-          owner: "un señor",
-          phone: 4,
-          email: "emilio@je",
-          temper: "malo",
-          gender: "chique",
-          img: "foto",
-          symptoms: "e",
-          temperature: 3,
-          hr: 3,
-          rr: 3,
-          membrane: "e",
-          cap: 2,
-          sap: 2,
-          dap: 2,
-          map: 2,
-          fluids: "a",
-          meds: "a",
-          ml: 4,
-          hour: 4,
-          via: "a",
-        },
-      };
-      const result = petsReducer(mockFullInitialState, mockUpdate);
-      expect(result.pets[0]).toEqual(mockUpdate.payload);
     });
   });
 
