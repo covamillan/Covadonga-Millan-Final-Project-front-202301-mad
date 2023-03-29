@@ -1,5 +1,5 @@
 import { SyntheticEvent, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useWorkers } from "../../hooks/useWorkers";
 import { Worker } from "../../models/worker";
 import { WorkersRepo } from "../../services/workers/workers.repo";
