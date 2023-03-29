@@ -156,8 +156,8 @@ export default function AddPet() {
               required
             >
               <option value="">Choose an option</option>
-              <option value="good">Female</option>
-              <option value="bad">Male</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
             </select>
           </label>
 
