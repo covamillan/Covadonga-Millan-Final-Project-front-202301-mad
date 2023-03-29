@@ -12,9 +12,9 @@ export function Menu() {
           <Link to="/add-pet">Add pet</Link>
         </li>
         <li>
-          <Link to="/logout">
+          <a href="https://covadonga-millan-final-project.netlify.app/logout">
             Log out <img src="../../../logout.png" alt="logout" />
-          </Link>
+          </a>
         </li>
       </ul>
     </nav>
