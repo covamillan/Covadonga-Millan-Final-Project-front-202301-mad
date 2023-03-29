@@ -17,7 +17,7 @@ describe("Given the App router component", () => {
             "/home",
             "/add-pet",
             "/symptoms",
-            /*"/detail",*/
+            "/find",
           ]}
           initialIndex={number}
         >
@@ -75,11 +75,11 @@ describe("Given the App router component", () => {
     });
   });
 
-  // A describe("When rendering and the path is '/detail'", () => {
-  //   test("Then the role 'textbox' should be in the document", async () => {
-  //     await waitFor(async () => listPaths(4));
-  //     const element = await screen.findByRole("button");
-  //     expect(element).toBeInTheDocument();
-  //   });
-  // });
+  describe("When rendering and the path is '/find'", () => {
+    test("Then the role 'textbox' should be in the document", async () => {
+      await waitFor(async () => listPaths(6));
+      const element = await screen.findByRole("button");
+      expect(element).toBeInTheDocument();
+    });
+  });
 });

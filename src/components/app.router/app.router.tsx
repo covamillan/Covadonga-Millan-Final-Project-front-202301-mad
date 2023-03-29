@@ -1,11 +1,12 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router";
+import Details from "../details/details";
 
 const Login = lazy(() => import("../login/login"));
 const Register = lazy(() => import("../register/register"));
 const Home = lazy(() => import("../home/home"));
 const AddPet = lazy(() => import("../add.pet/add.pet"));
-// const Detail = lazy(() => import("../detail/detail");
+const Detail = lazy(() => import("../details/details"));
 const AddSymptoms = lazy(() => import("../symptoms.form/symptoms.form"));
 
 export function AppRouter() {
@@ -23,7 +24,7 @@ export function AppRouter() {
             element={<AddSymptoms></AddSymptoms>}
           ></Route>
         }
-        {/* <Route path={"/detail"} element={<Detail></Detail>}></Route> */}
+        {<Route path={"/find"} element={<Details></Details>}></Route>}
         {/* <Route path={"*"} element={<Error></Error>}></Route> */}
       </Routes>
     </Suspense>

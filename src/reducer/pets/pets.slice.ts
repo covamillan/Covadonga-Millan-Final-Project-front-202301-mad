@@ -41,6 +41,7 @@ export const petsSlice = createSlice({
       state.pets = actualData.map((item) =>
         item.id === action.payload.id ? { ...item, ...action.payload } : item
       );
+      state.actualPet.id = action.payload.id;
     },
 
     deletePet(state, action: PayloadAction<PetStructure["id"]>) {
