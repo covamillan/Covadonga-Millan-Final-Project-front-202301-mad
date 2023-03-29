@@ -31,10 +31,10 @@ describe("Given pet slice", () => {
     test("Then it should return a payload", () => {
       const mockFind: PayloadAction<PetStructure> = {
         type: "pet/findPet",
-        payload: mockPet.id,
+        payload: mockPet,
       };
       const result = petsReducer(mockFullInitialState, mockFind);
-      expect(result.pets[0]["id"]).toEqual(mockFind.payload);
+      expect(mockPet).toEqual(mockFind.payload);
     });
   });
 

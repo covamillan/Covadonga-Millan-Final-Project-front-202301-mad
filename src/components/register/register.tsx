@@ -1,10 +1,9 @@
 import { SyntheticEvent, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useWorkers } from "../../hooks/useWorkers";
 import { Worker } from "../../models/worker";
 import { WorkersRepo } from "../../services/workers/workers.repo";
 import styles from "./register.module.scss";
-import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const repo = useMemo(() => new WorkersRepo(), []);

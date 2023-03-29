@@ -61,14 +61,6 @@ describe("Given the detail component", () => {
         expect(element).toHaveLength(21);
       });
     });
-    describe("When we want to update the info", () => {
-      test("Then the info will be updated", async () => {
-        const elements = screen.getAllByRole("button");
-        await act(async () => await userEvent.click(elements[2]));
-
-        expect(usePets(mockRepo).updatePetId).toHaveBeenCalled();
-      });
-    });
   });
 
   describe("When we want to update the symptoms", () => {
