@@ -12,7 +12,7 @@ export function useWorkers(repo: WorkersRepo) {
   const workerRegister = async (info: Partial<WorkerStructure>) => {
     try {
       const data = await repo.create(info);
-      navigate("/home");
+
       dispatch(register(data.results[0]));
     } catch (error) {
       console.log((error as Error).message);

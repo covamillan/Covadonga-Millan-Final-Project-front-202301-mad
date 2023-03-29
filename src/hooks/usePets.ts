@@ -31,16 +31,19 @@ export function usePets(repo: PetsRepo) {
     }
   }, [petsDispatch, repo, workersState.workerLogged]);
 
-  const findPetId = async (idPet: PetStructure["id"]) => {
-    try {
-      const workerToken = workersState.workerLogged;
-      if (!workerToken) throw new Error("Find pet not authorized");
-      const data = await repo.findPetRepo(workerToken, idPet);
-      petsDispatch(findPet(data.results[0].id));
-    } catch (error) {
-      console.log((error as Error).message);
-    }
-  };
+  const findPetId = useCallback(
+    async (idPet: string) => {
+      try {
+        const workerToken = workersState.workerLogged;
+        if (!workerToken) throw new Error("Find pet not authorized");
+        const data = await repo.findPetRepo(workerToken, idPet);
+        petsDispatch(findPet(data.results[0]));
+      } catch (error) {
+        console.log((error as Error).message);
+      }
+    },
+    [petsDispatch, repo, workersState.workerLogged]
+  );
 
   const findPetOwner = async (ownerPet: PetStructure["owner"]) => {
     try {
